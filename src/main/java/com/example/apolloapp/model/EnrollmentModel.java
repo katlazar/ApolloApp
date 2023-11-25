@@ -20,9 +20,9 @@ public class EnrollmentModel {
     @JoinColumn(name = "user_id")
     private UserModel user;
 
-//    @OneToOne
-//    @JoinColumn(name = "course_id")
-//    private CourseModel course;
+    @OneToOne
+    @JoinColumn(name = "course_id")
+    private CourseModel course;
 
     @Column(name="creation_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
