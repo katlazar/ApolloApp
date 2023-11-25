@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.security.core.userdetails.User;
 
 import java.util.Set;
 
@@ -34,11 +35,16 @@ public class UserModel {
     @Column(name="password", nullable = false)
     private String password;
 
-    @OneToOne(mappedBy = "users")
+    @OneToOne(mappedBy = "user")
     private EnrollmentModel enrollment;
 
     @ManyToMany
+    @JoinTable(name="role_user")
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<RoleModel> roles;
 
+
+    public static User.UserBuilder builder() {
+        return null;
+    }
 }

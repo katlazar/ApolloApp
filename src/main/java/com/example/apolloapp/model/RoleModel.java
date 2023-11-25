@@ -10,6 +10,8 @@ public class RoleModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="type_name")
     private String typeName;
 
 }
