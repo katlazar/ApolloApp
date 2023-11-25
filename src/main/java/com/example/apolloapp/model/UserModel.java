@@ -2,9 +2,14 @@ package com.example.apolloapp.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import java.util.Set;
 
 @Entity
 @Data
+@Table(name= "users")
 public class UserModel {
 
     @Id
@@ -17,19 +22,23 @@ public class UserModel {
     @Column(name="surname")
     private String surname;
 
-    @Column(name="email")
+    @Column(name="email", nullable = false, unique = true)
     private String email;
 
     @Column(name="type")
     private String type;
 
-    @Column(name="login")
-    private String login;
+    @Column(name="username", nullable = false, unique = true)
+    private String username;
 
-    @Column(name="password")
+    @Column(name="password", nullable = false)
     private String password;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "users")
     private EnrollmentModel enrollment;
+
+    @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Set<RoleModel> roles;
 
 }
