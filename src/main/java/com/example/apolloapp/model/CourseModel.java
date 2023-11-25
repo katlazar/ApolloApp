@@ -43,6 +43,9 @@ public class CourseModel {
     @Column(name = "enroll")
     private int enroll;
 
+    @OneToOne(mappedBy = "course")
+    private EnrollmentModel enrollment;
+
 // czy przypadkiem te dwie funkcjonalnosci nie powinny byc robione w nowej kalsie?
 // np. CourseAvailability
 

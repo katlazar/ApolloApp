@@ -29,4 +29,7 @@ public class UserModel {
     @Column(name="password")
     private String password;
 
+    @OneToOne(mappedBy = "user")
+    private EnrollmentModel enrollment;
+
 }
