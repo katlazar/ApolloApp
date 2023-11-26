@@ -38,13 +38,8 @@ public class UserModel {
     @OneToOne(mappedBy = "user")
     private EnrollmentModel enrollment;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="role_user")
-    @LazyCollection(LazyCollectionOption.FALSE)
     private Set<RoleModel> roles;
 
-
-    public static User.UserBuilder builder() {
-        return null;
-    }
 }
