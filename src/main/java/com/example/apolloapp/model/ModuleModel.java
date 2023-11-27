@@ -1,18 +1,9 @@
 package com.example.apolloapp.model;
 
-/*
- * id
- * subject
- * user_id (dotyczy instructor ---> czy  instructor_id )
- * start_date
- * end_date
- * total_hours
- */
-
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.util.Date;
+
 @Entity
 @Data
 @Table(name = "module")
