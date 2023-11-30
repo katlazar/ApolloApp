@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping("/")
-    public String getHome(Model model) {
+    public String getHomeWithLogin(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         // Pobranie nazwy zalogowanego użytkownika
@@ -22,6 +22,20 @@ public class HomeController {
         model.addAttribute("userRoles", userRoles);
         model.addAttribute("userName", username);  // Dodanie nazwy użytkownika do modelu
 
+        return "home";
+    }
+
+    @GetMapping("/test")
+    public String getTest(Model model) {
+        model.addAttribute("userRoles", "ADMIN");
+        model.addAttribute("userName", "Admin");
+        return "test";
+    }
+
+    @GetMapping("/home")
+    public String getHome(Model model) {
+        model.addAttribute("userRoles", "");
+        model.addAttribute("userName", "");
         return "home";
     }
 
