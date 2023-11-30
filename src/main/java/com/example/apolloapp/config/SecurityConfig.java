@@ -28,7 +28,7 @@ public class SecurityConfig {
                         authorize.anyRequest().authenticated()
                 ).formLogin(
                         form -> form
-                                .loginPage("/login")
+                                .loginPage("/home")
                                 .loginProcessingUrl("/login")
                                 .defaultSuccessUrl("/")
                                 .permitAll()

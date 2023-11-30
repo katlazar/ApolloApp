@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{/login}">Login</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
                 </li>
             </ul>
         </div>
@@ -24,6 +24,23 @@
 </nav>
 <br /><br />
 <div class="container">
+    <div class="row">
+        <h1>Witaj <span th:text="${userName}"></span>!</h1>
+        <p th:text="${userRoles}"></p>
+    </div>
+    <h2>Welcome</h2> <p>Spring Security Thymeleaf tutorial</p>
+    <div sec:authorize="hasRole('USER')">Text visible to user.</div>
+    <div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div>
+    <div sec:authorize="isAuthenticated()"> Text visible only to authenticated users.
+    </div>
+    Authenticated username:
+    <div sec:authentication="name"></div>
+    Authenticated user roles:
+    <div sec:authentication="authorities"></div>
+
+    <button sec:authorize="hasRole('ADMIN')" class="btn btn-primary">Edytuj kurs</button>
+    <button sec:authorize="hasRole('ADMIN')" class="btn btn-success">Dodaj nowy kurs</button>
+    <button sec:authorize="hasRole('USER')" class="btn btn-danger">Zapisz się na kurs</button>
 
 </div>
 </body>
