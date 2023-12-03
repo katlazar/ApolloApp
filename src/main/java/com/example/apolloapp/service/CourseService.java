@@ -18,4 +18,17 @@ public class CourseService {
     public List<CourseModel> getCourseList() {
         return courseRepository.findAll();
     }
+
+    public void addCourse(CourseModel course) {
+        courseRepository.save(course);
+    }
+
+    public CourseModel getCourseById(Long id) {
+        return courseRepository.findById(id).orElse(null);
+        // todo czy tu orElse chcemy żeby zwróciło null? w dokumencacji null jest dopuszczalny
+    }
+
+    public void deleteCourse(Long id) {
+        courseRepository.deleteById(id);
+    }
 }

@@ -8,7 +8,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand">Spring Security Login With Database Authentication</a>
+        <a class="navbar-brand">Available courses</a>
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -21,10 +21,9 @@
 <br/>
 
 <!-- Begin Page Content -->
-<div class="container">
+<div class="container-fluid">
     <!--Page Heading-->
-    <h1 class="h3 mb-2 text-gray-800">Available courses</h1>
-    <p class="mb-4">Upcoming courses</p>
+    <h1 class="h5 mb-2 text-gray-800">Upcoming courses</h1>
     <!--Tabel formatting-->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -33,32 +32,24 @@
                     <thead>
                     <tr>
                         <th>Course</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Type</th>
                         <th>Start date</th>
                         <th>End date</th>
-                        <th>Total hours / weeks (?)</th>
                         <th>Available places</th>
-                        <th>Buy</th>
+                        <th>Details</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:foreach items="${courseModel}" var="title">
                         <tr>
                             <td>${title.name}</td>
-                            <td>${title.description}</td>
-                            <td>${title.basePrice}</td>
-                            <td>${title.type}</td>
                             <td>${title.startDate}</td>
                             <td>${title.endDate}</td>
-                            <td>${title.totalHours}</td>
                             <td>${title.capacity}</td>
                             <td>
-                                <a href='<c:url value="/buyCourse/${title.id}"/>'
+                                <a href='<c:url value="/courseDetails/${title.id}"/>'
                                    class="btn-right btn btn-primary"
                                    role="button">
-                                    Buy
+                                    See more
                                 </a>
                             </td>
                         </tr>
