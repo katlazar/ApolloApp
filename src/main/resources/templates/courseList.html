@@ -39,21 +39,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:foreach items="${courseModel}" var="title">
-                        <tr>
-                            <td>${title.name}</td>
-                            <td>${title.startDate}</td>
-                            <td>${title.endDate}</td>
-                            <td>${title.capacity}</td>
+                        <tr th:each="course : ${courseModel}">
+                            <td th:text="${course.name}"></td>
+                            <td th:text="${course.startDate}"></td>
+                            <td th:text="${course.endDate}"></td>
+                            <td th:text="${course.capacity}"></td>
                             <td>
-                                <a href='<c:url value="/courseDetails/${title.id}"/>'
+                                <a th:href="@{/courseDetails/{id}(id=${course.id})}"
                                    class="btn-right btn btn-primary"
                                    role="button">
                                     See more
                                 </a>
                             </td>
                         </tr>
-                    </c:foreach>
                     </tbody>
                 </table>
             </div>
