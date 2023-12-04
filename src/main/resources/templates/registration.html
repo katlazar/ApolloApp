@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            max-width: 600px;
+            margin: 10px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .register-link {
+            color: #ffc004;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        .register-link:hover {
+            color: #000000;
+        }
+
+        .register-text {
+            margin-top: 10px;
+        }
+        .nav-link-back::before {
+            content: "\2190 ]";
+            margin-right: 8px;
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand display-4" style="font-size: 2rem;">Apollo IT SCHOOL</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link btn btn-warning me-2 nav-link-back" th:href="@{/home}" onmouseover="this.style.color='black';" onmouseout="this.style.color='';">Powrót</a>
+            </li>
+        </ul>
+    </div>
+    </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-white"></nav>
+<br/>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="login-container">
+                <h2 class="text-center mb-4">Rejestracja</h2>
+                <div class="card-body">
+
+                    <div class="mb-3">
+                        <label class="form-label" for="firstName">Imię:</label>
+                        <input type="text"
+                               id="firstName" name="firstName"
+                               class="form-control registration-input"
+                               placeholder="Wprowadź imię"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="lastName">Nazwisko:</label>
+                        <input type="text"
+                               id="lastName" name="lastName"
+                               class="form-control registration-input"
+                               placeholder="Wprowadź nazwisko"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="email">Email:</label>
+                        <input type="email"
+                               id="email" name="email"
+                               class="form-control registration-input"
+                               placeholder="Wprowadź adres email"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="newUsername">Nazwa użytkownika:</label>
+                        <input type="text"
+                               id="newUsername" name="newUsername"
+                               class="form-control registration-input"
+                               placeholder="Wprowadź nazwę użytkownika"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="newPassword">Hasło:</label>
+                        <input type="password"
+                               id="newPassword" name="newPassword"
+                               class="form-control registration-input"
+                               placeholder="Wprowadź hasło"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="confirmPassword">Powtórz hasło:</label>
+                        <input type="password"
+                               id="confirmPassword" name="confirmPassword"
+                               class="form-control registration-input"
+                               placeholder="Powtórz hasło"/>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-warning registration-btn">Zarejestruj się</button>
+                    </div>
+                    <div class="register-text">
+                        Masz już konto? <a href="link_do_strony_logowania" th:href="@{/login}" class="register-link">Zaloguj się</a>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

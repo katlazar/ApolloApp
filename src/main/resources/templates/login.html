@@ -1,24 +1,77 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            max-width: 600px;
+            margin: 10px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-input {
+            margin-bottom: 15px;
+        }
+
+        .login-btn {
+            width: 100%;
+        }
+
+        .register-link {
+            color: #ffc004;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        .register-link:hover {
+            color: #000000;
+        }
+
+        .register-text {
+            margin-top: 10px;
+        }
+        .nav-link-back::before {
+            content: "\2190 ]";
+            margin-right: 8px;
+        }
+
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand">Spring Security Login With Database Authentication</a>
-        <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+        <a class="navbar-brand display-4" style="font-size: 2rem;">Apollo IT SCHOOL</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link btn btn-warning me-2 nav-link-back" th:href="@{/home}" onmouseover="this.style.color='black';" onmouseout="this.style.color='';">Powrót</a>
+            </li>
+        </ul>
+    </div>
     </div>
 </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-white"></nav>
 <br/>
 <br/>
+
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -28,27 +81,30 @@
             <div th:if="${param.logout}">
                 <div class="alert alert-success">You have been logged out.</div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="text-center">Login</h2>
-                </div>
+
+            <div class="login-container">
+                <h2 class="text-center mb-4">Logowanie</h2>
                 <div class="card-body">
                     <form method="post" role="form" th:action="@{/login}"
                           class="form-horizontal">
-                        <div class="form-group mb-3">
-                            <label class="control-label"> Username</label>
+                        <div class=" mb-3">
+                            <label class="form-label" for="username">Nazwa użytkownika:</label>
                             <input type="text"
                                    id="username" name="username"
-                                   class="form-control"
-                                   placeholder="Enter username"/>
+                                   class="form-control login-input"
+                                   placeholder="Wprowadź nazwę użytkownika"/>
                         </div>
-                        <div class="form-group mb-3">
-                            <label class="control-label"> Password</label>
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Hasło:</label>
                             <input type="password" id="password" name="password"
-                                   class="form-control" placeholder="Enter password"/>
+                                   class="form-control login-input" placeholder="Wprowadź hasło"/>
                         </div>
-                        <div class="form-group mb-3">
-                            <button type="submit" class="btn btn-primary">Login</button>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-warning login-btn">Zaloguj</button>
+                        </div>
+                        <div class="register-text">
+                            Nie masz konta? <a href="link_do_strony_rejestracji" th:href="@{/registration}" class="register-link">Zarejestruj
+                            się</a>
                         </div>
                     </form>
                 </div>
@@ -56,5 +112,6 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
