@@ -1,0 +1,92 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Course</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand">Adding new course</a>
+    </div>
+</nav>
+<br/>
+<br/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12 col-md-12 mb-12">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <form method="post" role="form" th:action="@{/addCourse}" class="form-horizontal">
+                        <!--      czy ten zapis?      <form method="post" action='<c:url value="/addStudent"/>'>-->
+                        <div class="form-group mb-3">
+                            <label class="col-2 col-form-label">Course name</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="name" placeholder="enter course name">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="col-2 col-form-label">Course description</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="description" placeholder="enter course description">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="col-2 col-form-label">Course type</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="type" placeholder="enter course type">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="col-2 col-form-label">Course start date</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="startDate" placeholder="enter start date">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="col-2 col-form-label">Course end date</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="endDate" placeholder="enter end date">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="col-2 col-form-label">Course total hours</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="totalHours" placeholder="enter total end-to-end number of course hours">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="col-2 col-form-label">Course number of available places</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="capacity" placeholder="enter max acceptable number of students">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="col-2 col-form-label">Course current number of signed-up students</label>
+                            <div class="col-10">
+                                <input class="form-control" type="text" name="enroll" placeholder="DO USUNIĘCIA???">
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
