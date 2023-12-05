@@ -53,4 +53,14 @@ public class HomeController {
     public String getLogout() {
         return "redirect:/login";
     }
+
+    @GetMapping("/registration")
+    public String getRegistrationPage() {
+        return "registration";
+    }
+
+    @GetMapping("/contact")
+    public String getContactPage() {
+        return "contact";
+    }
 }
