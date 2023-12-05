@@ -1,13 +1,21 @@
 package com.example.apolloapp.controller;
 
+import com.example.apolloapp.model.CourseModel;
+import com.example.apolloapp.service.CourseService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+import java.util.Random;
+
 @Controller
+@RequiredArgsConstructor
 public class HomeController {
+    private final CourseService courseService;
 
     @GetMapping("/")
     public String getHomeWithLogin(Model model) {
@@ -34,8 +42,14 @@ public class HomeController {
 
     @GetMapping("/home")
     public String getHome(Model model) {
-        model.addAttribute("userRoles", "");
-        model.addAttribute("userName", "");
+        List<CourseModel> list = courseService.getCourseList();
+        int numberOfCourses = list.size();
+        int courseIndex = new Random().nextInt(numberOfCourses);
+        model.addAttribute("courseModel1", list.get(courseIndex));
+        courseIndex = (courseIndex+1) % (numberOfCourses);
+        model.addAttribute("courseModel2", list.get(courseIndex));
+        courseIndex = (courseIndex+1) % (numberOfCourses);
+        model.addAttribute("courseModel3", list.get(courseIndex));
         return "home";
     }
 

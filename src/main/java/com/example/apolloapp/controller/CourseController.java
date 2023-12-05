@@ -12,19 +12,17 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-//@RequestMapping(value = "/cars", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class CourseController {
 
     private final CourseService courseService;
 
-    // dodanie pierwszego widoku z listą kursów (Kasia Ł. ---> dodaje listę kursów w bazie)
     @GetMapping("/courses")
     public String getCourseList(Model model){
         List<CourseModel> list = courseService.getCourseList();
         model.addAttribute("courseModel", list);
         return "courseList";
-        //ze strony głównej nie przełącza na Courses
     }
+
     @GetMapping("/addCourse")
     public String getAddCourse(Model model) {
         List<CourseModel> list = courseService.getCourseList();
