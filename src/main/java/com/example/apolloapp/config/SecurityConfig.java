@@ -14,6 +14,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.util.Arrays;
 
+import static org.springframework.boot.autoconfigure.security.servlet.PathRequest.toH2Console;
+
 @Configuration
 public class SecurityConfig {
 
@@ -23,10 +25,17 @@ public class SecurityConfig {
     }
     @Bean
     public SecurityFilterChain filterSecurity(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf(c->c.disable())
+                .cors(c->c.disable())
                 .authorizeHttpRequests((authorize) ->  // potem będzie rozbudowane o uprawnienia użytkowników
-                        authorize.anyRequest().authenticated()
-                ).formLogin(
+                        authorize
+                                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                                .anyRequest().permitAll() // aplikacja widoczna dla wszystkich i funkcjonalna ->przełącza na inne widoki
+//                                .anyRequest().authenticated() // włączenie widoczności dla użytkowników tylko zalogowanych
+                )
+                .headers(headers->headers.frameOptions().disable())
+                .formLogin(
+
                         form -> form
                                 .loginPage("/home")
                                 .loginProcessingUrl("/login")
