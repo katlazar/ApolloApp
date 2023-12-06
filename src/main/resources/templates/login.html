@@ -1,56 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .card-body {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        body {
-            background-color: #f8f9fa;
-        }
-
-        .login-container {
-            max-width: 600px;
-            margin: 10px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .login-input {
-            margin-bottom: 15px;
-        }
-
-        .login-btn {
-            width: 100%;
-        }
-
-        .register-link {
-            color: #ffc004;
-            text-decoration: underline;
-            transition: color 0.3s;
-        }
-
-        .register-link:hover {
-            color: #000000;
-        }
-
-        .register-text {
-            margin-top: 10px;
-        }
-        .nav-link-back::before {
-            content: "\2190 ]";
-            margin-right: 8px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -62,7 +16,7 @@
         </button>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link btn btn-warning me-2 nav-link-back" th:href="@{/home}" onmouseover="this.style.color='black';" onmouseout="this.style.color='';">Powrót</a>
+                <a class="btn btn-warning card-btn me-2 nav-link-back" th:href="@{/home}" onmouseover="this.style.color='white';" onmouseout="this.style.color='';">Powrót</a>
             </li>
         </ul>
     </div>
@@ -75,12 +29,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <div th:if="${param.error}">
-                <div class="alert alert-danger">Invalid Username or Password</div>
-            </div>
-            <div th:if="${param.logout}">
-                <div class="alert alert-success">You have been logged out.</div>
-            </div>
+<!--            <div th:if="${param.error}">-->
+<!--                <div class="alert alert-danger">Invalid Username or Password</div>-->
+<!--            </div>-->
+<!--            <div th:if="${param.logout}">-->
+<!--                <div class="alert alert-success">You have been logged out.</div>-->
+<!--            </div>-->
 
             <div class="login-container">
                 <h2 class="text-center mb-4">Logowanie</h2>

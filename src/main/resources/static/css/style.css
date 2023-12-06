@@ -1,0 +1,139 @@
+/* style.css */
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-btn {
+    margin-top: auto;
+}
+
+.custom-card {
+    margin-right: 0rem;
+}
+
+.white-bar-text {
+    font-size: 24px;
+    margin: 0;
+    padding: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    line-height: 1.5;
+    width: 50%;
+    margin: auto;
+}
+
+.white-bar {
+    /*background-color: white;*/
+    padding: 20px;
+    margin-top: 0px;
+    border-radius: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button {
+    margin-left: 1000px;
+
+}
+
+.nav-link-login::before {
+    content: "\2192 ]";
+    padding-right: 8px;
+    position: relative;
+    top: -1px;
+}
+
+.home-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.login-container {
+    max-width: 600px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-input {
+    margin-bottom: 15px;
+}
+
+.login-btn {
+    width: 100%;
+}
+
+.register-link {
+    color: #ffc004;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.register-link:hover {
+    color: #000000;
+}
+
+.register-text {
+    margin-top: 10px;
+}
+
+.nav-link-back::before {
+    content: "\2190 ]";
+    margin-right: 8px;
+    position: relative;
+    top: -1px;
+}
+
+.more-info-text {
+    padding: 10px;
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+
+.more-info-link {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 18px;
+}
+
+.more-info-link:hover {
+    color: #ffc004;
+    font-size: 18px;
+}
+
+.more-info-link::before {
+    content: "\2192 ]";
+    margin-right: 0px;
+    position: relative;
+    top: -2px;
+}
+.contact-card h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #333;
+}
+
+
+
+
