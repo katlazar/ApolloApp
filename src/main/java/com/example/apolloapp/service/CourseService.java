@@ -4,7 +4,6 @@ import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -31,4 +30,6 @@ public class CourseService {
     public void deleteCourse(Long id) {
         courseRepository.deleteById(id);
     }
+
+
 }

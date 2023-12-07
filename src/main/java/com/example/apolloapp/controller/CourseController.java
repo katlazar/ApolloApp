@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-
 import java.util.List;
 
 @Controller
@@ -41,6 +40,7 @@ public class CourseController {
         CourseModel course = courseService.getCourseById(id);
         model.addAttribute("courseModel", course);
         return "editCourse";
+        // todo czy powinniśmy dodać też post mapping dla edit?
     }
 
     @PostMapping("/deleteCourse/{id}")
@@ -50,9 +50,12 @@ public class CourseController {
         //po usunięciu chcemy wrócić do strony z kursami czy wyświetlić coś innego?
     }
 
+    // stworzenie end-point dla widoku gdzie pokazujemy wszystkie dane o kursie
+    // pod button "see more"
     @GetMapping("/courseDetails/{id}")
     public String showCourseDetails(@PathVariable("id")Long id, Model model){
-        courseService.getCourseById(id);
+        CourseModel course = courseService.getCourseById(id);
+        model.addAttribute("courseModel", course);
         return "courseDetails";
         // czy pod "getCourseById" umieszczamy wszystkie szczegóły kursu?
     }
