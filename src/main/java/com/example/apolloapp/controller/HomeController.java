@@ -39,6 +39,27 @@ public class HomeController {
         model.addAttribute("userName", "Admin");
         return "test";
     }
+    @GetMapping("/adminPanel")
+    public String getAdminPanel(Model model) {
+        model.addAttribute("userRoles", "ADMIN");
+        model.addAttribute("userName", "Admin");
+        return "adminPanel";
+    }
+
+    @GetMapping("/studentPanel")
+    public String getStudentPanel(Model model) {
+        model.addAttribute("userRoles", "STUDENT");
+        model.addAttribute("userName", "Student");
+        return "studentPanel";
+    }
+
+    @GetMapping("/lecturerPanel")
+    public String getLecturerPanel(Model model) {
+        model.addAttribute("userRoles", "LECTURER");
+        model.addAttribute("userName", "Lecturer");
+        return "lecturerPanel";
+    }
+
 
     @GetMapping("/home")
     public String getHome(Model model) {

@@ -5,9 +5,7 @@ import com.example.apolloapp.service.ModuleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 
@@ -40,7 +38,7 @@ public class ModuleController {
         return new RedirectView("/modules");
     }
 
-    @GetMapping("/editModule/{id}")
+    @PutMapping("/editModule/{id}")
     public String editModule(@PathVariable("id") Long id, Model model){
         ModuleModel module = moduleService.getModuleById(id);
         model.addAttribute("moduleModel", module);
@@ -48,7 +46,7 @@ public class ModuleController {
         // todo czy powinniśmy dodać też post mapping dla edit?
     }
 
-    @PostMapping("/deteleModule/{id}")
+    @DeleteMapping("/deteleModule/{id}") //
     public RedirectView deleteModule(@PathVariable("id") Long id, Model model){
         moduleService.deleteModule(id);
         return new RedirectView("/courses");

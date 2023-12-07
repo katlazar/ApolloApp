@@ -20,10 +20,12 @@ public class ModuleService {
 
     public void addModule(ModuleModel module) {
         moduleRepository.save(module);
+        // jeżeli istnieje obiekt o danym id to edit nadpisze zminaay
+        // dodać lepiej metode do edit
     }
 
     public ModuleModel getModuleById(Long id) {
-        return moduleRepository.findById(id).orElse(null);
+        return moduleRepository.findById(id).orElseThrow(()->new RuntimeException("Nie ma obiektu")); // do stworzenia własny  exeption
         // TODO try-catch na null? + return message if not exist
     }
 
