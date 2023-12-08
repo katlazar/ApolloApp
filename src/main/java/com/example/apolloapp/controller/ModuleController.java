@@ -43,7 +43,7 @@ public class ModuleController {
         ModuleModel module = moduleService.getModuleById(id);
         model.addAttribute("moduleModel", module);
         return "editModule";
-        // todo czy powinniśmy dodać też post mapping dla edit?
+        // todo czy powinniśmy dodać też post mapping dla edit? --> zamiana na @Put
     }
 
     @DeleteMapping("/deteleModule/{id}") //

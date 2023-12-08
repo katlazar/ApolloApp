@@ -1,5 +1,6 @@
 package com.example.apolloapp.service;
 
+import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.model.UserModel;
 import com.example.apolloapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,14 +19,27 @@ public class UserService {
     }
 
     public void addUser(UserModel user) {
-        userRepository.save(user);
+//        if(!userExists(user)){
+            userRepository.save(user);
+//        } else{
+//            throw new RuntimeException("User with the same name already exist in the data base. Change name.");
+//        }
+
     }
 
     public UserModel getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findById(id).orElseThrow(()->new RuntimeException("Course does not exist. Check input"));
     }
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+//    private boolean userExists(UserModel user){
+//        UserModel existingUser = UserRepository.findBySurname(user.getSurname());
+//        return existingUser != null;
+//        // jeżeli nie jest null to kurs już istnieje
+//    }
+
+
 }

@@ -5,9 +5,7 @@ import com.example.apolloapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -38,20 +36,19 @@ public class UserController {
         return new RedirectView("/users");
     }
 
-    @GetMapping("/editUser/{id}")
+    @PutMapping("/editUser/{id}")
     public String editUser(@PathVariable("id") Long id, Model model){
         UserModel user = userService.getUserById(id);
         model.addAttribute("userModel", user);
         return "editUsre";
-        // todo czy powinniśmy dodać też post mapping dla edit?
+        // todo czy powinniśmy dodać też post mapping dla edit?---> zamiana na @Put
     }
 
-    @PostMapping
+    @DeleteMapping
     public RedirectView deleteUser(@PathVariable("id") Long id, Model model){
         userService.deleteUser(id);
         return new RedirectView("/users");
     }
-
 
 
 }

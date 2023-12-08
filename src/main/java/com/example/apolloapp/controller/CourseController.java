@@ -35,15 +35,15 @@ public class CourseController {
         return new RedirectView("/courses");
     }
 
-    @GetMapping("/editCourse/{id}")
+    @PutMapping("/editCourse/{id}")
     public String editCourse(@PathVariable("id") Long id, Model model){
         CourseModel course = courseService.getCourseById(id);
         model.addAttribute("courseModel", course);
         return "editCourse";
-        // todo czy powinniśmy dodać też post mapping dla edit?
+        // todo czy powinniśmy dodać też post mapping dla edit? --> zamiana na @Put
     }
 
-    @PostMapping("/deleteCourse/{id}")
+    @DeleteMapping("/deleteCourse/{id}")
     public RedirectView deleteCourse(@PathVariable("id") Long id, Model model){
         courseService.deleteCourse(id);
         return new RedirectView("/courses");
@@ -57,6 +57,7 @@ public class CourseController {
         CourseModel course = courseService.getCourseById(id);
         model.addAttribute("courseModel", course);
         return "courseDetails";
+        // request obsłużony @RequestBody?
         // czy pod "getCourseById" umieszczamy wszystkie szczegóły kursu?
     }
 
