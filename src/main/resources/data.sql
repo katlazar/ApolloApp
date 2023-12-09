@@ -5,10 +5,10 @@ VALUES  ('Ewa', 'Zwierzyńska', 'ewa.zwierzynska@java.com', 'admin', '$2a$10$gqH
         ('Kasia', 'Suchanek', 'kasia.suchanek@java.com', 'admin', '$2a$10$gqHrslMttQWSsDSVRTK1OehkkBiXsJ/a4z2OURU./dizwOQu5Lovu', 'kasia'),
         ('Java', 'Java', 'java.user@java.com','user', '$2a$10$BaG/azuGkeNwVUJK7XWcm.aGvBmk.WW5A.5dqs9CWZvZk8IPngSAK', 'user'),
         ('Java', 'Java', 'java.test@java.com','user', '$2a$12$TYSPPDsgR1T9vpgMSavOteZoqzjGVLt7rzsqKLrGL4oQdE3rWDNru', 'test'),
-        ('Instruktor', 'Instruktor', 'instruktor.test@java.com','instruktor', '$2a$12$r2wEqaPsx.ADnvJcFwSr5u.ssVuRqjMkr8K6T.xJsxj4Pc3bAyTBu', 'instruktor');
+        ('Teacher', 'Teacher', 'teacher.test@java.com','teacher', '$2a$12$r2wEqaPsx.ADnvJcFwSr5u.ssVuRqjMkr8K6T.xJsxj4Pc3bAyTBu', 'teacher');
 
 -- table roles entries
-INSERT INTO roles (type_name) VALUES ('ROLE_ADMIN'), ('ROLE_USER'), ('ROLE_INSTRUCTOR');
+INSERT INTO roles (type_name) VALUES ('ROLE_ADMIN'), ('ROLE_USER'), ('ROLE_TEACHER');
 
 -- table role_user entries
 INSERT INTO role_user VALUES (1,1), (1,2), (1,3), (2,4), (2,5), (3,6);
@@ -28,3 +28,4 @@ VALUES
     ('JavaScript', 1, '2023-12-01', '2023-12-21', 45),
     ('Python', 1, '2023-12-01', '2023-12-21', 60),
     ('Java', 1, '2023-12-01', '2023-12-21', 60);
+
