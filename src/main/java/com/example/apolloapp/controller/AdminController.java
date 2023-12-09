@@ -36,11 +36,11 @@ public class AdminController {
     }
 
     // admin pobiera listę wszytskich kursów ---> w wierszu tabeli z nazwą kursu na końcu button "Edytuj"
-    @GetMapping("/courses")
+    @GetMapping("/a-courses")
     public String getCourseList(Model model){
         List<CourseModel> list = courseService.getCourseList();
         model.addAttribute("courseModel", list);
-        return "courseList";
+        return "admin-course-list";
     }
 
     // admin pobiera listę wszytskich kursów ---> w wierszu tabeli z nazwą modułu na końcu button "Edytuj"

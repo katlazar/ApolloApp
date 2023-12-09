@@ -22,6 +22,12 @@ public class CourseController {
         model.addAttribute("courseModel", list);
         return "addCourse";
     }
+    @GetMapping("/courses")
+    public String getCourseList(Model model){
+        List<CourseModel> list = courseService.getCourseList();
+        model.addAttribute("courseModel", list);
+        return "courseList";
+    }
 
     @PostMapping("/addCourse")
     public RedirectView postAddCourse(CourseModel course){
