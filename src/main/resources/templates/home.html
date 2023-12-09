@@ -10,11 +10,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand display-4" style="font-size: 2rem;">Apollo IT SCHOOL</a>
-        <button class="navbar-toggler d-flex align-items-center" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        </button>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
@@ -35,12 +30,33 @@
             </ul>
 
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="btn btn-warning card-btn me-2 nav-link-login" th:href="@{/login}"
-                       onmouseover="this.style.color='white';" onmouseout="this.style.color='';"
-                       sec:authorize="!isAuthenticated()">Zaloguj się</a>
-                    <a class="nav-link text-white" th:href="@{/logout}" sec:authorize="isAuthenticated()">
-                        <span th:text="${userName}"></span></a>
+
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="btn btn-warning card-btn me-2 nav-link-login" th:href="@{/login}"
+                           onmouseover="this.style.color='white';" onmouseout="this.style.color='';"
+                           sec:authorize="!isAuthenticated()">Zaloguj się</a>
+
+                        <a class="nav-link text-white" th:href="@{/admin}"
+                           sec:authorize="hasRole('ADMIN')">Panel administratora</a>
+                    </li>
+                </ul>
+
+<!--problem z widocznoscia przyscikow-->
+
+<!--                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="btn btn-warning card-btn me-2 nav-link-login" th:href="@{/login}"-->
+<!--                           onmouseover="this.style.color='white';" onmouseout="this.style.color='';"-->
+<!--                           sec:authorize="!isAuthenticated()">Zaloguj się</a>-->
+
+<!--                        <a class="nav-link text-white" th:href="@{/admin}"-->
+<!--                           sec:authorize="hasRole('ADMIN')">Panel administartora</a>-->
+<!--                        <a class="nav-link text-white" th:href="@{/student}"-->
+<!--                           sec:authorize="hasRole('USER')">Panel studenta</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+
                 </li>
             </ul>
         </div>
