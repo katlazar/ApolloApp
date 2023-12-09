@@ -15,13 +15,6 @@ public class ModuleController {
 
     private final ModuleService moduleService;
 
-    //pobranie listy modułów z bazy danych
-    @GetMapping("/modules")
-    public String getModuleList(Model model){
-        List<ModuleModel> list = moduleService.getModuleList();
-        model.addAttribute("moduleModel", list);
-        return "moduleList";
-    }
 
     // dodanie modułu do konkretnego kursu --> button "Dodaj moduł" przy kursie
     @GetMapping("/addModule")

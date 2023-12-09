@@ -28,12 +28,6 @@ public class HomeController {
         model.addAttribute("userName", "Admin");
         return "test";
     }
-    @GetMapping("/adminPanel")
-    public String getAdminPanel(Model model) {
-        model.addAttribute("userRoles", "ADMIN");
-        model.addAttribute("userName", "Admin");
-        return "adminPanel";
-    }
 
     @GetMapping("/studentPanel")
     public String getStudentPanel(Model model) {
@@ -74,10 +68,10 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/admin")
-    public String getAdmin() {
-        return "admin";
-    }
+//    @GetMapping("/admin")
+//    public String getAdmin() {
+//        return "admin";
+//    }
 
     @GetMapping("/logout")
     public String getLogout() {

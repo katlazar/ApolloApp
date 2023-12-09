@@ -15,13 +15,6 @@ public class CourseController {
 
     private final CourseService courseService;
 
-    @GetMapping("/courses")
-    public String getCourseList(Model model){
-        List<CourseModel> list = courseService.getCourseList();
-        model.addAttribute("courseModel", list);
-        return "courseList";
-    }
-
     @GetMapping("/addCourse")
     public String getAddCourse(Model model) {
         List<CourseModel> list = courseService.getCourseList();

@@ -14,14 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
 
-    private UserService userService;
-
-    @GetMapping("/users")
-    public String getUserList(Model model){
-        List<UserModel> list = userService.getUserList();
-        model.addAttribute("userModel", list);
-        return "userList";
-    }
+    private final UserService userService;
 
     // dodanie nauczyciela do konkretnego modułu --> button "Dodaj nauczyciela / prowadzącego" przy module
     @GetMapping("/addUser")
@@ -40,7 +33,7 @@ public class UserController {
     public String editUser(@PathVariable("id") Long id, Model model){
         UserModel user = userService.getUserById(id);
         model.addAttribute("userModel", user);
-        return "editUsre";
+        return "editUser";
         // todo czy powinniśmy dodać też post mapping dla edit?---> zamiana na @Put
     }
 
