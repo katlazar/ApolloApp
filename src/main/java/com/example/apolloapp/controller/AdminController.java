@@ -39,7 +39,7 @@ public class AdminController {
     @GetMapping("/courses")
     public String getCourseList(Model model){
         List<CourseModel> list = courseService.getCourseList();
-        model.addAttribute("courseList", list);
+        model.addAttribute("courseModel", list);
         return "courseList";
     }
 
