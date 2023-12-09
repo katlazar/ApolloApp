@@ -53,11 +53,6 @@ public class HomeController {
         return "login";
     }
 
-//    @GetMapping("/admin")
-//    public String getAdmin() {
-//        return "admin";
-//    }
-
     @GetMapping("/logout")
     public String getLogout() {
         return "redirect:/login";
