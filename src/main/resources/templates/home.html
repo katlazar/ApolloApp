@@ -29,16 +29,17 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#" style="margin-left: 10px;">Co nas wyróżnia</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/contact}" style="margin-left: 10px;">Kontakt</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="btn btn-warning card-btn me-2 nav-link-login" th:href="@{/login}"
-                       onmouseover="this.style.color='white';" onmouseout="this.style.color='';">Zaloguj się</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-warning card-btn me-2" th:href="@{/contact}"
-                       onmouseover="this.style.color='white';" onmouseout="this.style.color='';">Kontakt</a>
+                       onmouseover="this.style.color='white';" onmouseout="this.style.color='';" sec:authorize="!isAuthenticated()">Zaloguj się</a>
+
+                    <a class="nav-link text-white" th:href="@{/logout}" sec:authorize="isAuthenticated()"><span th:text="${userName}"></span></a>
                 </li>
             </ul>
         </div>

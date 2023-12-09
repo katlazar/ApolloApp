@@ -18,19 +18,8 @@ public class HomeController {
     private final CourseService courseService;
 
     @GetMapping("/")
-    public String getHomeWithLogin(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        // Pobranie nazwy zalogowanego użytkownika
-        String username = authentication.getName();
-
-        // Pobranie ról zalogowanego użytkownika
-        String userRoles = authentication.getAuthorities().toString();
-
-        model.addAttribute("userRoles", userRoles);
-        model.addAttribute("userName", username);  // Dodanie nazwy użytkownika do modelu
-
-        return "home";
+    public String getMainPage() {
+        return "redirect:/home";
     }
 
     @GetMapping("/test")
@@ -63,9 +52,15 @@ public class HomeController {
 
     @GetMapping("/home")
     public String getHome(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        model.addAttribute("userRoles", authentication.getAuthorities().toString());
+        model.addAttribute("userName", authentication.getName());
+
         List<CourseModel> list = courseService.getCourseList();
         int numberOfCourses = list.size();
         int courseIndex = new Random().nextInt(numberOfCourses);
+
         model.addAttribute("courseModel1", list.get(courseIndex));
         courseIndex = (courseIndex+1) % (numberOfCourses);
         model.addAttribute("courseModel2", list.get(courseIndex));
