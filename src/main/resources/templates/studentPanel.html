@@ -12,8 +12,8 @@
   <div class="container-fluid d-flex justify-content-end">
     <div class="d-flex align-items-center">
 
-      <a class="navbar-brand display-4" style="font-size: 1.5rem; margin-left: 0px;">Panel studenta <span
-              th:text="${name}"></span></a>
+      <a class="navbar-brand display-4" style="font-size: 1.5rem; margin-left: 0px;"><span
+              th:text="${userObject.name + ' ' + userObject.surname}"></span></a>
       <div style="width: 40px; height: 40px; background-color: #ccc; border-radius: 50%; margin-right: 30px; text-align: center; line-height: 40px; margin-left: 0px;">
         <span style="color: white; font-size: 1.5rem; ">U</span>
       </div>
@@ -27,7 +27,7 @@
       <ul class="list-group list-group-flush">
 
         <li class="list-group-item" >
-          <a class="btn btn-warning card-btn me-2 nav-link-back" th:href="@{/home}"
+          <a class="btn btn-warning card-btn me-2 nav-link-back" th:href="@{/logout}"
              onmouseover="this.style.color='white';" onmouseout="this.style.color='';">Logout</a>
         </li>
         <li class="list-group-item" style="padding-top: 40px;">
