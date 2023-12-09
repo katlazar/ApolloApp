@@ -29,21 +29,6 @@ public class HomeController {
         return "test";
     }
 
-    @GetMapping("/studentPanel")
-    public String getStudentPanel(Model model) {
-        model.addAttribute("userRoles", "STUDENT");
-        model.addAttribute("userName", "Student");
-        return "studentPanel";
-    }
-
-    @GetMapping("/lecturerPanel")
-    public String getLecturerPanel(Model model) {
-        model.addAttribute("userRoles", "LECTURER");
-        model.addAttribute("userName", "Lecturer");
-        return "lecturerPanel";
-    }
-
-
     @GetMapping("/home")
     public String getHome(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
