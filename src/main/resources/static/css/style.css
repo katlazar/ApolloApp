@@ -134,6 +134,78 @@ body {
     color: #333;
 }
 
+.sidebar {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    top: 0px; /*  top: 50px; */
+    left: 0;
+    background-color: black;
+    color: white;
+    padding-top: 10px; /* padding-top: 40px; */
+    padding-left: 30px;
+}
+
+
+.sidebar-nav {
+    width: 100%;
+    padding: 0;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border: none;
+}
+
+.custom-btn {
+    width: 100%;
+    text-align: left;
+    padding: 0px;
+    border: none;
+    color: white;
+}
+
+.custom-btn:hover {
+    background-color: transparent;
+}
+
+.list-group-item a.custom-btn {
+    text-decoration: none;
+    /*color: jesli chcemy zmineic*/
+}
+
+.list-group-item a.custom-btn:hover {
+    color: lightslategrey;
+}
+.z-link::before {
+    content: "\1F4C5";
+    margin-right: 5px;
+    position: relative;
+    top: -2px;
+}
+.w-link::before {
+    content: "\2709";
+    margin-right: 5px;
+    position: relative;
+    top: -2px;
+}
+.o-link::before {
+    content: "\1F4CB";
+    margin-right: 5px;
+    position: relative;
+    top: -2px;
+}
+.p-link::before {
+    content: "\1F4CB";
+    margin-right: 5px;
+    position: relative;
+    top: -2px;
+}
+/*.content {*/
+/*    margin-left: 220px;*/
+/*    padding-top: 20px;*/
+/*}*/
+
 
 
 

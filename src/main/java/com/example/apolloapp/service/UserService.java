@@ -3,6 +3,8 @@ package com.example.apolloapp.service;
 import com.example.apolloapp.model.UserModel;
 import com.example.apolloapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -27,5 +29,10 @@ public class UserService {
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public UserModel getCurrentlyLoggedUser() {
+        UserDetails principal = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userRepository.findByUsernameOrEmail(principal.getUsername(), principal.getUsername());
     }
 }

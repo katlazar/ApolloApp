@@ -2,9 +2,7 @@ package com.example.apolloapp.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.springframework.security.core.userdetails.User;
+
 
 import java.util.Set;
 
