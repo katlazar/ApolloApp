@@ -16,29 +16,31 @@ public class UserController {
 
     private final UserService userService;
 
-    // dodanie nauczyciela do konkretnego modułu --> button "Dodaj nauczyciela / prowadzącego" przy module
+    // do dodawania ogólnie users (ADMIN / STUDENT / TEACHER)
     @GetMapping("/addUser")
     public String addUser(Model model){
         List<UserModel> list = userService.getUserList();
         model.addAttribute("userModel", list);
         return "userList";
     }
+    // do zapisywania ogólnie users (ADMIN / STUDENT / TEACHER)
     @PostMapping("/addUser")
     public RedirectView postAddUser(UserModel user){
         userService.addUser(user);
         return new RedirectView("/users");
     }
 
+    // do edycji wszystkich users (ADMIN / STUDENT / TEACHER)
     @PutMapping("/editUser/{id}")
     public String editUser(@PathVariable("id") Long id, Model model){
         UserModel user = userService.getUserById(id);
         model.addAttribute("userModel", user);
         return "editUser";
-        // todo czy powinniśmy dodać też post mapping dla edit?---> zamiana na @Put
     }
 
+    // do USUWANIA wszystkich users (ADMIN / STUDENT / TEACHER)
     @DeleteMapping
-    public RedirectView deleteUser(@PathVariable("id") Long id, Model model){
+    public RedirectView deleteUser(@PathVariable("id") Long id){
         userService.deleteUser(id);
         return new RedirectView("/users");
     }

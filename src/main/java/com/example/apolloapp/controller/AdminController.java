@@ -50,4 +50,5 @@ public class AdminController {
         model.addAttribute("moduleList", list);
         return "moduleList";
     }
+
 }

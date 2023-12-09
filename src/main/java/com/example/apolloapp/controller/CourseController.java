@@ -1,6 +1,7 @@
 package com.example.apolloapp.controller;
 
 import com.example.apolloapp.model.CourseModel;
+import com.example.apolloapp.model.UserModel;
 import com.example.apolloapp.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -33,11 +34,10 @@ public class CourseController {
         CourseModel course = courseService.getCourseById(id);
         model.addAttribute("courseModel", course);
         return "editCourse";
-        // todo czy powinniśmy dodać też post mapping dla edit? --> zamiana na @Put
     }
 
     @DeleteMapping("/deleteCourse/{id}")
-    public RedirectView deleteCourse(@PathVariable("id") Long id, Model model){
+    public RedirectView deleteCourse(@PathVariable("id") Long id){
         courseService.deleteCourse(id);
         return new RedirectView("/courses");
         //po usunięciu chcemy wrócić do strony z kursami czy wyświetlić coś innego?

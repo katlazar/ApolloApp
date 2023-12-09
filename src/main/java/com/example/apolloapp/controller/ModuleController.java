@@ -1,6 +1,8 @@
 package com.example.apolloapp.controller;
 
+import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.model.ModuleModel;
+import com.example.apolloapp.service.CourseService;
 import com.example.apolloapp.service.ModuleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,13 +16,14 @@ import java.util.List;
 public class ModuleController {
 
     private final ModuleService moduleService;
+    private final CourseService courseService;
 
 
-    // dodanie modułu do konkretnego kursu --> button "Dodaj moduł" przy kursie
+    // dodanie modułu do konkretnego kursu
     @GetMapping("/addModule")
     public String addModule(Model model){
-        List<ModuleModel> list = moduleService.getModuleList();
-        model.addAttribute("moduleModel", list);
+        List<CourseModel> list = courseService.getCourseList();
+        model.addAttribute("courseModel", list);
         return "addModule";
     }
 
@@ -36,13 +39,13 @@ public class ModuleController {
         ModuleModel module = moduleService.getModuleById(id);
         model.addAttribute("moduleModel", module);
         return "editModule";
-        // todo czy powinniśmy dodać też post mapping dla edit? --> zamiana na @Put
     }
 
-    @DeleteMapping("/deteleModule/{id}") //
-    public RedirectView deleteModule(@PathVariable("id") Long id, Model model){
+    @DeleteMapping("/deleteModule/{id}") //
+    public RedirectView deleteModule(@PathVariable("id") Long id){
         moduleService.deleteModule(id);
-        return new RedirectView("/courses");
+        return new RedirectView("/modules");
     }
+
 
 }
