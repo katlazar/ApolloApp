@@ -7,8 +7,11 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, Long> {
+
+
     UserModel findByUsernameOrEmail(String username, String email);  // do rozważenie czy wyszukiwanie po email jest nam potrzebne?
     // ---> w UserDetail jest problem z implementacją metody loadUserByUsername(String name)
 
+   // UserModel findByName(String name); -->wymusza wykonanie metody static
 
 }

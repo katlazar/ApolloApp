@@ -2,7 +2,6 @@ package com.example.apolloapp.controller;
 
 import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.service.CourseService;
-import com.example.apolloapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +16,6 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class HomeController {
     private final CourseService courseService;
-    private final UserService userService;
 
     @GetMapping("/")
     public String getMainPage() {
@@ -53,17 +51,6 @@ public class HomeController {
     @GetMapping("/login")
     public String getLogin() {
         return "login";
-    }
-
-    @GetMapping("/admin")
-    public String getAdmin(Model model) {
-        model.addAttribute("userObject", userService.getCurrentlyLoggedUser());
-        return "admin";
-    }
-    @GetMapping("/student")
-    public String getStudent(Model model) {
-        model.addAttribute("userObject", userService.getCurrentlyLoggedUser());
-        return "student";
     }
 
     @GetMapping("/logout")
