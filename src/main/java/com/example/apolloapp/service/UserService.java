@@ -1,26 +1,40 @@
 package com.example.apolloapp.service;
 
-import com.example.apolloapp.model.CourseModel;
+import com.example.apolloapp.model.RoleModel;
 import com.example.apolloapp.model.UserModel;
+import com.example.apolloapp.repository.RoleRepository;
 import com.example.apolloapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
     public List<UserModel> getUserList() {
         return userRepository.findAll();
     }
 
     public void addUser(UserModel user) {
+        user.setPassword(passwordEncoder().encode(user.getPassword()));
+        Set<RoleModel> roles = new HashSet<>();
+        roles.add(roleRepository.findById(2L).orElse(null));
+        user.setRoles(roles);
 //        if(!userExists(user)){
             userRepository.save(user);
 //        } else{

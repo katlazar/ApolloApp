@@ -16,7 +16,8 @@
         </button>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="btn btn-warning card-btn me-2 nav-link-back" th:href="@{/home}" onmouseover="this.style.color='white';" onmouseout="this.style.color='';">Powrót</a>
+                <a class="btn btn-warning card-btn me-2 nav-link-back" th:href="@{/home}"
+                   onmouseover="this.style.color='white';" onmouseout="this.style.color='';">Powrót</a>
             </li>
         </ul>
     </div>
@@ -32,55 +33,56 @@
             <div class="login-container">
                 <h2 class="text-center mb-4">Rejestracja</h2>
                 <div class="card-body">
-
-                    <div class="mb-3">
-                        <label class="form-label" for="firstName">Imię:</label>
-                        <input type="text"
-                               id="firstName" name="firstName"
-                               class="form-control registration-input"
-                               placeholder="Wprowadź imię"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="lastName">Nazwisko:</label>
-                        <input type="text"
-                               id="lastName" name="lastName"
-                               class="form-control registration-input"
-                               placeholder="Wprowadź nazwisko"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="email">Email:</label>
-                        <input type="email"
-                               id="email" name="email"
-                               class="form-control registration-input"
-                               placeholder="Wprowadź adres email"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="newUsername">Nazwa użytkownika:</label>
-                        <input type="text"
-                               id="newUsername" name="newUsername"
-                               class="form-control registration-input"
-                               placeholder="Wprowadź nazwę użytkownika"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="newPassword">Hasło:</label>
-                        <input type="password"
-                               id="newPassword" name="newPassword"
-                               class="form-control registration-input"
-                               placeholder="Wprowadź hasło"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="confirmPassword">Powtórz hasło:</label>
-                        <input type="password"
-                               id="confirmPassword" name="confirmPassword"
-                               class="form-control registration-input"
-                               placeholder="Powtórz hasło"/>
-                    </div>
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-warning registration-btn">Zarejestruj się</button>
-                    </div>
-                    <div class="register-text">
-                        Masz już konto? <a href="link_do_strony_logowania" th:href="@{/login}" class="register-link">Zaloguj się</a>
-                    </div>
+                    <form th:action="@{/register}" method="post" th:object="${userModel}">
+                        <div class="mb-3">
+                            <label class="form-label" for="name">Imię:</label>
+                            <input type="text"
+                                   id="name" name="name"
+                                   class="form-control registration-input"
+                                   placeholder="Wprowadź imię"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="surname">Nazwisko:</label>
+                            <input type="text"
+                                   id="surname" name="surname"
+                                   class="form-control registration-input"
+                                   placeholder="Wprowadź nazwisko"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email:</label>
+                            <input type="email"
+                                   id="email" name="email"
+                                   class="form-control registration-input"
+                                   placeholder="Wprowadź adres email"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Nazwa użytkownika:</label>
+                            <input type="text"
+                                   id="username" name="username"
+                                   class="form-control registration-input"
+                                   placeholder="Wprowadź nazwę użytkownika"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Hasło:</label>
+                            <input type="password"
+                                   id="password" name="password"
+                                   class="form-control registration-input"
+                                   placeholder="Wprowadź hasło"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="confirmPassword">Powtórz hasło:</label>
+                            <input type="password"
+                                   id="confirmPassword" name="confirmPassword"
+                                   class="form-control registration-input"
+                                   placeholder="Powtórz hasło"/>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-warning registration-btn">Zarejestruj się</button>
+                        </div>
+                        <div class="register-text">
+                            Masz już konto? <a href="link_do_strony_logowania" th:href="@{/login}" class="register-link">Zaloguj
+                            się</a>
+                        </div>
                     </form>
                 </div>
             </div>

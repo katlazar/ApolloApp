@@ -17,18 +17,18 @@ public class UserController {
     private final UserService userService;
 
     // do dodawania ogólnie users (ADMIN / STUDENT / TEACHER)
-    @GetMapping("/addUser")
-    public String addUser(Model model){
-        List<UserModel> list = userService.getUserList();
-        model.addAttribute("userModel", list);
-        return "userList";
-    }
-    // do zapisywania ogólnie users (ADMIN / STUDENT / TEACHER)
-    @PostMapping("/addUser")
-    public RedirectView postAddUser(UserModel user){
-        userService.addUser(user);
-        return new RedirectView("/users");
-    }
+//    @GetMapping("/addUser")
+//    public String addUser(Model model){
+//        List<UserModel> list = userService.getUserList();
+//        model.addAttribute("userModel", list);
+//        return "userList";
+//    }
+//    // do zapisywania ogólnie users (ADMIN / STUDENT / TEACHER)
+//    @PostMapping("/addUser")
+//    public RedirectView postAddUser(UserModel user){
+//        userService.addUser(user);
+//        return new RedirectView("/users");
+//    }
 
     // do edycji wszystkich users (ADMIN / STUDENT / TEACHER)
     @PutMapping("/editUser/{id}")
@@ -45,5 +45,15 @@ public class UserController {
         return new RedirectView("/users");
     }
 
+    @GetMapping("/registration")
+    public String getRegistrationPage(Model model) {
+        model.addAttribute("userModel", new UserModel());
+        return "registration";
+    }
 
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute("userModel") UserModel userModel) {
+        userService.addUser(userModel);
+        return "login";
+    }
 }
