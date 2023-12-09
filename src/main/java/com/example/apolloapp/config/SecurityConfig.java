@@ -30,11 +30,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) ->  // potem będzie rozbudowane o uprawnienia użytkowników
                         authorize
                                 .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
-//                                .anyRequest().permitAll() // aplikacja widoczna dla wszystkich i funkcjonalna ->przełącza na inne widoki
-                                .requestMatchers("/").permitAll()
-                                .requestMatchers(new AntPathRequestMatcher("/adminPanel")).hasAnyRole("ADMIN")
-                                .requestMatchers(new AntPathRequestMatcher("/lecturerPanel")).hasAnyRole("TEACHER")
-                                .requestMatchers(new AntPathRequestMatcher("/studentPanel")).hasAnyRole("STUDENT")
+                                .anyRequest().permitAll() // aplikacja widoczna dla wszystkich i funkcjonalna ->przełącza na inne widoki
+//                                .requestMatchers("/").permitAll()
+//                                .requestMatchers(new AntPathRequestMatcher("/adminPanel")).hasAnyRole("ADMIN")
+//                                .requestMatchers(new AntPathRequestMatcher("/lecturerPanel")).hasAnyRole("TEACHER")
+//                                .requestMatchers(new AntPathRequestMatcher("/studentPanel")).hasAnyRole("STUDENT")
 
 //                                .anyRequest().authenticated() // włączenie widoczności dla użytkowników tylko zalogowanych
                 )
