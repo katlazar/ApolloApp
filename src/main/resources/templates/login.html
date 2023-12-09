@@ -29,12 +29,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-<!--            <div th:if="${param.error}">-->
-<!--                <div class="alert alert-danger">Invalid Username or Password</div>-->
-<!--            </div>-->
-<!--            <div th:if="${param.logout}">-->
-<!--                <div class="alert alert-success">You have been logged out.</div>-->
-<!--            </div>-->
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Nieprawidłowa Nazwa użytkownika lub Hasło!</div>
+            </div>
+            <div th:if="${param.logout}">
+                <div class="alert alert-success">Zostałeś pomyślnie wylogowany.</div>
+            </div>
 
             <div class="login-container">
                 <h2 class="text-center mb-4">Logowanie</h2>
