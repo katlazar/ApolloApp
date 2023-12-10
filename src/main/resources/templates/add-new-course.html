@@ -59,7 +59,6 @@
                         <a class="btn btn-secondary login-btn">Wprowadź dane nowego kursu</a>
                     </div>
 
-<!--                    <form method="post" role="form" th:action="@{/add-new-course}"-->
                     <form method="post" role="form" th:action="@{/addCourse}"
                           class="form-horizontal">
                         <div class=" mb-3">
@@ -77,13 +76,28 @@
                         </div>
 
                         <div class=" mb-3">
-                            <label for="id" class="form-label">Wybierz trenera</label>
-                            <select class="form-control" id="id" th:field="*{courseModel}">
-                                <option value="" hidden>Wybierz</option>
-                                <option th:each="course : ${courseModel}" th:value="${course.id}" th:text="${course.name}"></option>
-                            </select>
+                            <label class="form-label" for="startDate">Data rozpoczęcia:</label>
+                            <input class="form-control" type="date" id="startDate" name="startDate"
+                                   placeholder="Wprowadź datę rozpoczęcia kursu"/>
                         </div>
 
+                        <div class=" mb-3">
+                            <label class="form-label" for="endDate">Data zakończenia:</label>
+                            <input class="form-control" type="date" id="endDate" name="endDate"
+                                   placeholder="Wprowadź datę zakonczenia kursu"/>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label class="form-label" for="capacity">Dostępne miejsca:</label>
+                            <input class="form-control" type="number" id="capacity" name="capacity"
+                                   placeholder="Dostępne miejsca"/>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label class="form-label" for="description">Opis szczegółowy</label>
+                            <input class="form-control" type="text" id="description" name="description"
+                                   placeholder="Opis szczegółowy"/>
+                        </div>
 
                         <div class="mb-3">
                             <button type="submit" class="btn btn-warning">Dodaj kurs</button>

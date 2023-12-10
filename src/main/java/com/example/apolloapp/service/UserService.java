@@ -22,7 +22,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
 
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -38,15 +38,15 @@ public class UserService {
         user.setType("user");
 
         UserModel existingUser = userRepository.findByUsernameOrEmail(user.getUsername(), user.getUsername());
-        if(existingUser == null){
+        if (existingUser == null) {
             userRepository.save(user);
-        } else{
+        } else {
             throw new RuntimeException("User with the same name already exist in the data base. Change name.");
         }
     }
 
     public UserModel getUserById(Long id) {
-        return userRepository.findById(id).orElseThrow(()->new RuntimeException("Course does not exist. Check input"));
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Course does not exist. Check input"));
     }
 
     public void deleteUser(Long id) {

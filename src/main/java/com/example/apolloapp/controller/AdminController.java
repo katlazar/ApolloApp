@@ -32,7 +32,7 @@ public class AdminController {
     public String getUserList(Model model){
         List<UserModel> list = userService.getUserList();
         model.addAttribute("userModel", list);
-        return "userList";
+        return "admin-teacher-list";
     }
 
     // admin pobiera listę wszytskich kursów ---> w wierszu tabeli z nazwą kursu na końcu button "Edytuj"
