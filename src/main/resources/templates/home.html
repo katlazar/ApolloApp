@@ -11,9 +11,9 @@
     <div class="container-fluid">
         <a class="navbar-brand display-4" style="font-size: 2rem;">Apollo IT SCHOOL</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav me-auto align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link text-white" th:href="@{/courses}" style="margin-left: 250px;">Kursy</a>
+                    <a class="nav-link text-white" th:href="@{/courses}" style="margin-left: 20px;">Kursy</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#" style="margin-left: 10px;">O nas</a>
@@ -30,7 +30,6 @@
             </ul>
 
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="btn btn-warning card-btn me-2 nav-link-login" th:href="@{/login}"
@@ -38,25 +37,11 @@
                            sec:authorize="!isAuthenticated()">Zaloguj się</a>
 
                         <a class="nav-link text-white" th:href="@{/admin}"
-                           sec:authorize="hasRole('ADMIN')">Panel administratora</a>
+                           sec:authorize="hasRole('ADMIN')">Panel administartora</a>
+                        <a class="nav-link text-white" th:href="@{/student}"
+                           sec:authorize="hasRole('USER')">Panel studenta</a>
                     </li>
                 </ul>
-
-<!--problem z widocznoscia przyscikow-->
-
-<!--                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">-->
-<!--                    <li class="nav-item">-->
-<!--                        <a class="btn btn-warning card-btn me-2 nav-link-login" th:href="@{/login}"-->
-<!--                           onmouseover="this.style.color='white';" onmouseout="this.style.color='';"-->
-<!--                           sec:authorize="!isAuthenticated()">Zaloguj się</a>-->
-
-<!--                        <a class="nav-link text-white" th:href="@{/admin}"-->
-<!--                           sec:authorize="hasRole('ADMIN')">Panel administartora</a>-->
-<!--                        <a class="nav-link text-white" th:href="@{/student}"-->
-<!--                           sec:authorize="hasRole('USER')">Panel studenta</a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-
                 </li>
             </ul>
         </div>
@@ -109,9 +94,12 @@
             </div>
         </div>
     </div>
+
 </div>
-<div class="more-info-text">
-    <a th:href="@{/courses}" class="more-info-link"> Pełna oferta kursów </a>
+<div class="white-bar-text white-bar">
+    <div class="col-md-5 mb-3 custom-card"style="padding-top: 10px;">
+        <a th:href="@{/courses}" class="btn btn-secondary login-btn" role="button" style="font-size: 1.2rem;">Pełna oferta kursów</a>
+    </div>
 </div>
 </body>
 </html>

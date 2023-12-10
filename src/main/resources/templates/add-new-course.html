@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>add-courses</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand display-4 ml-auto" style="font-size: 2rem;"></a>
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="navbar-brand card-btn me-2" style="font-size: 2rem; padding-right: 20px;">Dodaj nowy kurs</a>
+            </li>
+        </ul>
+    </div>
+    </div>
+</nav>
+
+<section class="row">
+    <aside class="sidebar col-md-3 navbar-dark bg-dark">
+        <nav class="sidebar-nav">
+
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item">
+                    <a class="btn btn-warning card-btn me-2 nav-link-back" th:href="@{/admin}"
+                       onmouseover="this.style.color='white';" onmouseout="this.style.color='';">Powrót</a>
+                </li>
+                <li class="list-group-item " style="padding-top: 40px;">
+                    <a href="#" class="custom-btn" style="color: lightslategrey;">
+                        <i class="ion-bag"></i> <span>Kursy</span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#" class="custom-btn ">
+                        <i class="ion-ios-settings"></i> <span>Moduły</span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#" class="custom-btn ">
+                        <i class="ion-ios-settings"></i> <span>Trenerzy</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+</section>
+
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-xl-12 col-md-12 mb-12">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <a class="btn btn-secondary login-btn">Wprowadź dane nowego kursu</a>
+                    </div>
+
+<!--                    <form method="post" role="form" th:action="@{/add-new-course}"-->
+                    <form method="post" role="form" th:action="@{/addCourse}"
+                          class="form-horizontal">
+                        <div class=" mb-3">
+                            <label class="form-label" for="name">Nazwa kursu:</label>
+                            <input class="form-control" type="text" id="name" name="name"
+                                   placeholder="Wprowadź nazwę kursu"/>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label for="id" class="form-label">Wybierz moduł</label>
+                            <select class="form-control" id="id" th:field="*{courseModel}">
+                                <option value="" hidden>Wybierz</option>
+                                <option th:each="course : ${courseModel}" th:value="${course.id}" th:text="${course.name}"></option>
+                            </select>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label for="id" class="form-label">Wybierz trenera</label>
+                            <select class="form-control" id="id" th:field="*{courseModel}">
+                                <option value="" hidden>Wybierz</option>
+                                <option th:each="course : ${courseModel}" th:value="${course.id}" th:text="${course.name}"></option>
+                            </select>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-warning">Dodaj kurs</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

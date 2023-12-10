@@ -201,10 +201,14 @@ body {
     position: relative;
     top: -2px;
 }
-/*.content {*/
-/*    margin-left: 220px;*/
-/*    padding-top: 20px;*/
-/*}*/
+.content {
+    margin-left: 220px;
+    padding-top: 30px;
+    padding-right: 30px;
+}
+.custom-table {
+    max-width: 100%;
+}
 
 
 
