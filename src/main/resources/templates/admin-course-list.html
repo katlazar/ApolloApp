@@ -60,18 +60,22 @@
                     <thead>
                     <tr>
                         <th>Naza kursu</th>
+                        <th>Moduły</th>
                         <th>Data rozpoczęcia</th>
                         <th>Data zakończenia</th>
                         <th>Dostępne miejsca</th>
                         <th>Opis szczegółowy</th>
+                        <th>Edycja</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="course : ${courseModel}">
                         <td th:text="${course.name}"></td>
+                        <td th:text="${course.name}"></td>
                         <td th:text="${course.startDate}"></td>
                         <td th:text="${course.endDate}"></td>
                         <td th:text="${course.capacity}"></td>
+                        <td th:text="${course.description}"></td>
                         <td>
                             <a th:href="@{/courseDetails/{id}(id=${course.id})}"
                                class="btn-right btn btn-warning"
