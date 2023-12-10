@@ -206,6 +206,9 @@ body {
     padding-top: 30px;
     padding-right: 250px;
 }
+.custom-table {
+    max-width: 100%;
+}
 
 
 

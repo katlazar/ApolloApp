@@ -1,7 +1,6 @@
 package com.example.apolloapp.controller;
 
 import com.example.apolloapp.model.CourseModel;
-import com.example.apolloapp.model.UserModel;
 import com.example.apolloapp.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,8 +19,9 @@ public class CourseController {
     public String getAddCourse(Model model) {
         List<CourseModel> list = courseService.getCourseList();
         model.addAttribute("courseModel", list);
-        return "addCourse";
+        return "add-new-course";
     }
+    //inny widok dla courses i dla a-courses
     @GetMapping("/courses")
     public String getCourseList(Model model){
         List<CourseModel> list = courseService.getCourseList();
