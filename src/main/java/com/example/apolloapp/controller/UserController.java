@@ -5,6 +5,7 @@ import com.example.apolloapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -52,8 +53,14 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("userModel") UserModel userModel) {
-        userService.addUser(userModel);
-        return "login";
+    public String registerUser(@ModelAttribute("userModel") UserModel userModel, BindingResult bindingResult, Model model) {
+        try {
+            userService.addUser(userModel);
+            return "login";
+        } catch (RuntimeException e) {
+            bindingResult.rejectValue("username", "error.userModel", "Użytkownik o tej nazwie lub e-mail już istnieje!");
+            model.addAttribute("userModel", userModel);
+            return "registration";
+        }
     }
 }

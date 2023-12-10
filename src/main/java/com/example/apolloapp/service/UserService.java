@@ -35,12 +35,14 @@ public class UserService {
         Set<RoleModel> roles = new HashSet<>();
         roles.add(roleRepository.findById(2L).orElse(null));
         user.setRoles(roles);
-//        if(!userExists(user)){
-            userRepository.save(user);
-//        } else{
-//            throw new RuntimeException("User with the same name already exist in the data base. Change name.");
-//        }
+        user.setType("user");
 
+        UserModel existingUser = userRepository.findByUsernameOrEmail(user.getUsername(), user.getUsername());
+        if(existingUser == null){
+            userRepository.save(user);
+        } else{
+            throw new RuntimeException("User with the same name already exist in the data base. Change name.");
+        }
     }
 
     public UserModel getUserById(Long id) {
@@ -51,15 +53,9 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-//    private boolean userExists(UserModel user){
-//        UserModel existingUser = UserRepository.findBySurname(user.getSurname());
-//        return existingUser != null;
-//        // jeżeli nie jest null to kurs już istnieje
-//    }
-
     public UserModel getCurrentlyLoggedUser() {
-        UserDetails principal = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return userRepository.findByUsernameOrEmail(principal.getUsername(), principal.getUsername());
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepository.findByUsernameOrEmail(username, username);
     }
 
 
