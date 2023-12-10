@@ -26,6 +26,14 @@ public class ModuleController {
         model.addAttribute("courseModel", list);
         return "addModule";
     }
+    // stworzenie end-point dla widoku gdzie pokazujemy wszystkie dane o module
+
+    @GetMapping("/moduleDetails/{id}")
+    public String showModuleDetails(@PathVariable("id")Long id, Model model){
+        ModuleModel module = moduleService.getModuleById(id);
+        model.addAttribute("moduleModel", module);
+        return "moduleDetails";
+    }
 
     // zapis modułu w repozytorium modułów
     @PostMapping("/addModule")

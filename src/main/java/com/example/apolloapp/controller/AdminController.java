@@ -43,12 +43,12 @@ public class AdminController {
         return "admin-course-list";
     }
 
-    // admin pobiera listę wszytskich kursów ---> w wierszu tabeli z nazwą modułu na końcu button "Edytuj"
+    // admin pobiera listę wszytskich modułów
     @GetMapping("/modules")
     public String getModuleList(Model model){
         List<ModuleModel> list = moduleService.getModuleList();
-        model.addAttribute("moduleList", list);
-        return "moduleList";
+        model.addAttribute("moduleModel", list);
+        return "admin-module-list";
     }
 
 }
