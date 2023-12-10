@@ -5,7 +5,7 @@ VALUES  ('Ewa', 'Zwierzyńska', 'ewa.zwierzynska@java.com', 'admin', '$2a$10$gqH
         ('Kasia', 'Suchanek', 'kasia.suchanek@java.com', 'admin', '$2a$10$gqHrslMttQWSsDSVRTK1OehkkBiXsJ/a4z2OURU./dizwOQu5Lovu', 'kasia'),
         ('Franek', 'User', 'java.user@java.com','user', '$2a$10$BaG/azuGkeNwVUJK7XWcm.aGvBmk.WW5A.5dqs9CWZvZk8IPngSAK', 'user1'),
         ('Wanda', 'User', 'java.test@java.com','user', '$2a$12$TYSPPDsgR1T9vpgMSavOteZoqzjGVLt7rzsqKLrGL4oQdE3rWDNru', 'user2'),
-        ('Teacher', 'Teacher', 'teacher.test@java.com','teacher', '$2a$12$r2wEqaPsx.ADnvJcFwSr5u.ssVuRqjMkr8K6T.xJsxj4Pc3bAyTBu', 'teacher');
+        ('Andy', 'Teacher', 'teacher.test@java.com','teacher', '$2a$12$r2wEqaPsx.ADnvJcFwSr5u.ssVuRqjMkr8K6T.xJsxj4Pc3bAyTBu', 'teacher');
 
 -- table roles entries
 INSERT INTO roles (type_name) VALUES ('ROLE_ADMIN'), ('ROLE_USER'), ('ROLE_TEACHER');
@@ -23,9 +23,9 @@ VALUES
 -- table module entries
 INSERT INTO module(subject, user_id, start_date, end_date, total_hours)
 VALUES
-    ('SQL', 1, '2023-12-01', '2023-12-21', 30),
-    ('Machine Learning', 1, '2023-12-01', '2023-12-21', 15),
-    ('JavaScript', 1, '2023-12-01', '2023-12-21', 45),
-    ('Python', 1, '2023-12-01', '2023-12-21', 60),
-    ('Java', 1, '2023-12-01', '2023-12-21', 60);
+    ('SQL', 6, '2023-12-01', '2023-12-21', 30),
+    ('Machine Learning', 6, '2023-12-01', '2023-12-21', 15),
+    ('JavaScript', 6, '2023-12-01', '2023-12-21', 45),
+    ('Python', 6, '2023-12-01', '2023-12-21', 60),
+    ('Java', 6, '2023-12-01', '2023-12-21', 60);
 
