@@ -72,21 +72,24 @@
                                    id="password" name="password"
                                    class="form-control registration-input"
                                    placeholder="Wprowadź hasło" required/>
+                            <!--                            required pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}"-->
                         </div>
-                        <!--                        <div class="mb-3">-->
-                        <!--                            <label class="form-label" for="confirmPassword">Powtórz hasło:</label>-->
-                        <!--                            <input type="password"-->
-                        <!--                                   id="confirmPassword" name="confirmPassword"-->
-                        <!--                                   class="form-control registration-input"-->
-                        <!--                                   placeholder="Powtórz hasło"/>-->
-                        <!--                        </div>-->
+                        <div class="mb-3">
+                            <label class="form-label" for="confirmPassword">Powtórz hasło:</label>
+                            <input type="password"
+                                   id="confirmPassword" name="confirmPassword"
+                                   class="form-control registration-input"
+                                   placeholder="Powtórz hasło"
+                                   oninput="checkPasswordMatch()"
+                                   oninvalid="this.setCustomValidity('Hasła nie są identyczne')"/>
+                            <!-- Komunikat dla niewłaściwego hasła -->
+                        </div>
                         <div class="mb-3">
                             <button type="submit" class="btn btn-warning registration-btn">Zarejestruj się</button>
                         </div>
                         <div class="register-text">
                             Masz już konto? <a href="link_do_strony_logowania" th:href="@{/login}"
-                                               class="register-link">Zaloguj
-                            się</a>
+                                               class="register-link">Zaloguj się</a>
                         </div>
                     </form>
                 </div>
@@ -94,5 +97,17 @@
         </div>
     </div>
 </div>
+<script>
+    function checkPasswordMatch() {
+        let newPassword = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (newPassword !== confirmPassword) {
+            document.getElementById("confirmPassword").setCustomValidity("Hasła nie są identyczne");
+        } else {
+            document.getElementById("confirmPassword").setCustomValidity("");
+        }
+    }
+</script>
 </body>
 </html>
