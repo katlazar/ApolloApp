@@ -32,7 +32,7 @@ public class CourseController {
     @PostMapping("/addCourse")
     public RedirectView postAddCourse(CourseModel course){
         courseService.addCourse(course);
-        return new RedirectView("/courses");
+        return new RedirectView("/a-courses");
     }
 
     @PutMapping("/editCourse/{id}")
@@ -45,7 +45,7 @@ public class CourseController {
     @DeleteMapping("/deleteCourse/{id}")
     public RedirectView deleteCourse(@PathVariable("id") Long id){
         courseService.deleteCourse(id);
-        return new RedirectView("/courses");
+        return new RedirectView("/a-courses");
         //po usunięciu chcemy wrócić do strony z kursami czy wyświetlić coś innego?
     }
 
