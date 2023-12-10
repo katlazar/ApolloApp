@@ -2,6 +2,8 @@ package com.example.apolloapp.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,10 +22,10 @@ public class ModuleModel {
     private Long userId;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private LocalDate endDate;
 
     @Column(name = "total_hours")
     private Integer totalHours;

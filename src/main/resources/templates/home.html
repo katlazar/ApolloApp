@@ -37,9 +37,9 @@
                            sec:authorize="!isAuthenticated()">Zaloguj się</a>
 
                         <a class="nav-link text-white" th:href="@{/admin}"
-                           sec:authorize="hasRole('ADMIN')">Panel administartora</a>
+                           sec:authorize="hasRole('ADMIN')" style="font-size: 1.2rem;">Panel administartora</a>
                         <a class="nav-link text-white" th:href="@{/student}"
-                           sec:authorize="hasRole('USER')">Panel studenta</a>
+                           sec:authorize="hasRole('USER')" style="font-size: 1.2rem;">Panel studenta</a>
                     </li>
                 </ul>
                 </li>
@@ -97,8 +97,9 @@
 
 </div>
 <div class="white-bar-text white-bar">
-    <div class="col-md-5 mb-3 custom-card"style="padding-top: 10px;">
-        <a th:href="@{/courses}" class="btn btn-secondary login-btn" role="button" style="font-size: 1.2rem;">Pełna oferta kursów</a>
+    <div class="col-md-5 mb-3 custom-card" style="padding-top: 10px;">
+        <a th:href="@{/courses}" class="btn btn-secondary login-btn" role="button" style="font-size: 1.2rem;">Pełna
+            oferta kursów</a>
     </div>
 </div>
 </body>
