@@ -1,5 +1,6 @@
 package com.example.apolloapp.controller;
 
+import com.example.apolloapp.dto.ModuleDto;
 import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.model.ModuleModel;
 import com.example.apolloapp.service.CourseService;
@@ -35,10 +36,10 @@ public class ModuleController {
         return "moduleDetails";
     }
 
-    // zapis modułu w repozytorium modułów
+    // zapis modułu w repozytorium modułów (odwołanie do całego obiektu poprzez @RequestBody)
     @PostMapping("/addModule")
-    public RedirectView postAddModule(ModuleModel module){
-        moduleService.addModule(module);
+    public RedirectView postAddModule(@RequestBody ModuleDto moduleDto){
+        moduleService.addModule(moduleDto);
         return new RedirectView("/modules");
     }
 

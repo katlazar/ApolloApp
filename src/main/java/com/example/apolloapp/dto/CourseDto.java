@@ -2,6 +2,11 @@ package com.example.apolloapp.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -21,3 +26,6 @@ public class CourseDto {
     private int enroll;
 
 }
+
+
+
