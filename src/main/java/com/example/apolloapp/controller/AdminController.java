@@ -32,6 +32,7 @@ public class AdminController {
     public String getUserList(Model model){
         List<UserModel> list = userService.getUserList();
         model.addAttribute("userModel", list);
+        model.addAttribute("userObject", userService.getCurrentlyLoggedUser());
         return "admin-teacher-list";
     }
 
@@ -40,6 +41,7 @@ public class AdminController {
     public String getCourseList(Model model){
         List<CourseModel> list = courseService.getCourseList();
         model.addAttribute("courseModel", list);
+        model.addAttribute("userObject", userService.getCurrentlyLoggedUser());
         return "admin-course-list";
     }
 
@@ -48,6 +50,7 @@ public class AdminController {
     public String getModuleList(Model model){
         List<ModuleModel> list = moduleService.getModuleList();
         model.addAttribute("moduleModel", list);
+        model.addAttribute("userObject", userService.getCurrentlyLoggedUser());
         return "admin-module-list";
     }
 
