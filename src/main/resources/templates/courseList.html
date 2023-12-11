@@ -31,8 +31,12 @@
             <div class="table-responsive">
                 <table class="table action-panel table-bordered" id="dataTable" cellspacing="0">
                     <thead>
-                    <div th:if="${param.success}">
-                        <div class="alert alert-success">Zostałeś pomyślnie zapisany na kurs.</div>
+                    <div th:if="${param.id}">
+                        <div class="alert alert-success">Zostałeś pomyślnie zapisany na kurs "<span th:text="${courseName}"></span>".
+                            <a class="btn btn-warning card-btn me-2 nav-link-login" th:href="@{/login}"
+                               onmouseover="this.style.color='white';" onmouseout="this.style.color='';"
+                               sec:authorize="hasRole('USER')">Zaloguj się ponownie</a>
+                        </div>
                     </div>
                     <tr>
                         <th>Nazwa kursu</th>

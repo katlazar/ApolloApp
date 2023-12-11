@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -33,11 +33,10 @@ public class UserModel {
     @Column(name="password", nullable = false)
     private String password;
 
-    @OneToOne(mappedBy = "user")
-    private EnrollmentModel enrollment;
+    @OneToMany(mappedBy = "user")
+    private List<EnrollmentModel> enrollments;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="role_user")
-    private Set<RoleModel> roles;
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id")
+    private RoleModel role;
 }

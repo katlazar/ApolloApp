@@ -1,5 +1,6 @@
 package com.example.apolloapp.service;
 
+import com.example.apolloapp.model.RoleModel;
 import com.example.apolloapp.model.UserModel;
 import com.example.apolloapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 // jest to klasa łącząca naszą bazę danych ze stroną logowania
 
@@ -29,12 +30,11 @@ public class UserDetail implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("User not exists by Username");
         }
-        Set<GrantedAuthority> authorities = user.getRoles().stream()
-                .map((role) -> new SimpleGrantedAuthority(role.getTypeName()))
-                .collect(Collectors.toSet());
+        RoleModel rm = user.getRole();
+        GrantedAuthority authorithy = new SimpleGrantedAuthority(user.getRole().getTypeName());
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add(authorithy);
+
         return new User(username, user.getPassword(), authorities);
-        // co się dzieje w return?
-        // org.springframework.security.core.userdetails. ---> to jest import klasy
-        // User klasa za Spring Security i na podstawie tej klasy ściągamy informacje jakie role ma użytkownia
     }
 }
