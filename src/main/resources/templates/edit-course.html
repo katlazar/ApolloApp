@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>add-courses</title>
+    <title>edit-courses</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -12,7 +12,8 @@
         <a class="navbar-brand display-4 ml-auto" style="font-size: 2rem;"></a>
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="navbar-brand card-btn me-2" style="font-size: 1.5rem; padding-right: 20px;">Dodaj nowy kurs</a>
+                <a class="navbar-brand card-btn me-2" style="font-size: 1.5rem; padding-right: 20px;">Edycja kursu --tu
+                    nazwa--</a>
             </li>
         </ul>
     </div>
@@ -35,7 +36,7 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="#" class="custom-btn"th:href="@{/modules}">
+                    <a href="#" class="custom-btn" th:href="@{/modules}">
                         <i class="ion-ios-settings"></i> <span>Moduły</span>
                     </a>
                 </li>
@@ -49,60 +50,60 @@
     </aside>
 </section>
 
-
 <div class="container-fluid">
     <div class="row content">
         <div class="col-xl-12 col-md-12 mb-12">
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <div class="mb-3">
-                        <a class="btn btn-secondary login-btn">Wprowadź dane nowego kursu</a>
-                    </div>
+                    <form method="post" role="form" th:action="@{/editCourse}" class="form-horizontal">
+                        <input type="hidden" th:field="*{id}"/>
 
-                    <form method="post" role="form" th:action="@{/addCourse}"
-                          class="form-horizontal">
-
-                        <div class=" mb-3">
-                            <label class="form-label" for="name">Nazwa kursu:</label>
+                        <div class="mb-3">
+                            <label class="form-label" for="name">Zmień nazwę kursu:</label>
                             <input class="form-control" type="text" id="name" name="name"
-                                   placeholder="Wprowadź nazwę kursu"/>
+                                   th:field="*{courseModel.name}"/>
                         </div>
 
                         <div class=" mb-3">
-                            <label for="moduleId1" class="form-label">Wybierz moduł</label>
-                            <select class="form-control" id="moduleId1" name="moduleId1" th:field="*{moduleModel}" multiple="multiple">
-                                <option value="" hidden>Wybierz</option>
-                                <option th:each="module : ${moduleModel}" th:value="${module.id}" th:text="${module.subject}"></option>
-                            </select>
+                            <label for="moduleId1" class="form-label">Zmień moduł</label>
+                            <input class="form-control" type="text" id="moduleId1" name="moduleId1"
+                                   th:field="*{courseModel.modules}"/>
                         </div>
 
+
                         <div class=" mb-3">
-                            <label class="form-label" for="startDate">Data rozpoczęcia:</label>
+                            <label class="form-label" for="startDate">Zmień datę rozpoczęcia:</label>
                             <input class="form-control" type="date" id="startDate" name="startDate"
-                                   placeholder="Wprowadź datę rozpoczęcia kursu"/>
+                                   th:field="*{courseModel.startDate}"/>
                         </div>
 
                         <div class=" mb-3">
-                            <label class="form-label" for="endDate">Data zakończenia:</label>
+                            <label class="form-label" for="endDate">Zmień datę zakończenia:</label>
                             <input class="form-control" type="date" id="endDate" name="endDate"
-                                   placeholder="Wprowadź datę zakonczenia kursu"/>
+                                   th:field="*{courseModel.endDate}"/>
                         </div>
 
                         <div class=" mb-3">
-                            <label class="form-label" for="capacity">Dostępne miejsca:</label>
+                            <label class="form-label" for="capacity">Zmień dostępne miejsca:</label>
                             <input class="form-control" type="number" id="capacity" name="capacity"
-                                   placeholder="Dostępne miejsca"/>
+                                   th:field="*{courseModel.capacity}"/>
                         </div>
 
                         <div class=" mb-3">
-                            <label class="form-label" for="description">Opis szczegółowy</label>
+                            <label class="form-label" for="description">Zmień opis szczegółowy</label>
                             <input class="form-control" type="text" id="description" name="description"
-                                   placeholder="Opis szczegółowy"/>
+                                   th:field="*{courseModel.description}"/>
                         </div>
 
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-warning">Dodaj kurs</button>
+                            <button type="submit" class="btn btn-warning">Zapisz zmiany</button>
                         </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-warning">Wyczyść wszytskie dane</button>
+                        </div>
+
+
                     </form>
                 </div>
             </div>
@@ -112,4 +113,3 @@
 
 </body>
 </html>
-
