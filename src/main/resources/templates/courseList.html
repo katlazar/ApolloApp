@@ -31,12 +31,16 @@
             <div class="table-responsive">
                 <table class="table action-panel table-bordered" id="dataTable" cellspacing="0">
                     <thead>
+                    <div th:if="${param.success}">
+                        <div class="alert alert-success">Zostałeś pomyślnie zapisany na kurs.</div>
+                    </div>
                     <tr>
-                        <th>Naza kursu</th>
+                        <th>Nazwa kursu</th>
                         <th>Data rozpoczęcia</th>
                         <th>Data zakończenia</th>
                         <th>Dostępne miejsca</th>
                         <th>Opis szczegółowy</th>
+                        <th sec:authorize="!isAuthenticated() or hasRole('USER')">Zapisy na kurs</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -50,6 +54,18 @@
                                    class="btn-right btn btn-warning"
                                    role="button">
                                     Zobacz więcej
+                                </a>
+                            </td>
+                            <td sec:authorize="!isAuthenticated() or hasRole('USER')">
+                                <a th:href="@{/login}"
+                                   class="btn-right btn btn-warning"
+                                   role="button" sec:authorize="!isAuthenticated()">
+                                    Zapisz się
+                                </a>
+                                <a th:href="@{'/enrollment?id=' + ${course.id}}"
+                                   class="btn-right btn btn-warning"
+                                   role="button" sec:authorize="hasRole('USER')">
+                                    Zapisz się
                                 </a>
                             </td>
                         </tr>

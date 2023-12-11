@@ -1,5 +1,6 @@
 package com.example.apolloapp.controller;
 
+import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.model.UserModel;
 import com.example.apolloapp.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -62,5 +63,11 @@ public class UserController {
             model.addAttribute("userModel", userModel);
             return "registration";
         }
+    }
+
+    @GetMapping("/enrollment")
+    public RedirectView addEnrollment(@RequestParam("id") Long courseId) {
+        Long id=courseId;
+        return new RedirectView("/courses?success");
     }
 }
