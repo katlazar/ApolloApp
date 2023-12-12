@@ -54,7 +54,8 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <form method="post" role="form" th:action="@{/editCourse}" class="form-horizontal">
-                        <input type="hidden" th:field="*{id}"/>
+<!--                        <input type="hidden" th:field="*{id}"/>-->
+
 
                         <div class="mb-3">
                             <label class="form-label" for="name">Zmień nazwę kursu:</label>
@@ -72,13 +73,13 @@
                         <div class=" mb-3">
                             <label class="form-label" for="startDate">Zmień datę rozpoczęcia:</label>
                             <input class="form-control" type="date" id="startDate" name="startDate"
-                                   th:field="*{courseModel.startDate}"/>
+                                   th:value="*{courseModel.startDate}"/>
                         </div>
 
                         <div class=" mb-3">
                             <label class="form-label" for="endDate">Zmień datę zakończenia:</label>
                             <input class="form-control" type="date" id="endDate" name="endDate"
-                                   th:field="*{courseModel.endDate}"/>
+                                   th:value="${courseModel.endDate}"/>
                         </div>
 
                         <div class=" mb-3">
@@ -97,11 +98,9 @@
                             <button type="submit" class="btn btn-warning">Zapisz zmiany</button>
                         </div>
 
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-warning">Usuń kurs</button>
-                        </div>
-
-
+<!--                        <div class="mb-3">-->
+<!--                            <button type="submit" class="btn btn-warning">Usuń kurs</button>-->
+<!--                        </div>-->
                     </form>
                 </div>
             </div>
