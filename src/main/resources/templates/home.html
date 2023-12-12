@@ -30,18 +30,18 @@
             </ul>
 
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="btn btn-warning card-btn me-2 nav-link-login" th:href="@{/login}"
-                           onmouseover="this.style.color='white';" onmouseout="this.style.color='';"
-                           sec:authorize="!isAuthenticated()">Zaloguj się</a>
+                <li class="nav-item">
+                    <a class="btn btn-warning card-btn me-2 nav-link-login" th:href="@{/login}"
+                       onmouseover="this.style.color='white';" onmouseout="this.style.color='';"
+                       sec:authorize="!isAuthenticated()">Zaloguj się</a>
+                    <a class="btn btn-warning card-btn me-2 nav-link-back" th:href="@{/logout}"
+                       onmouseover="this.style.color='white';" onmouseout="this.style.color='';"
+                       sec:authorize="hasRole('USER')">Wyloguj się</a>
 
-                        <a class="nav-link text-white" th:href="@{/admin}"
-                           sec:authorize="hasRole('ADMIN')" style="font-size: 1.2rem;">Panel administartora</a>
-                        <a class="nav-link text-white" th:href="@{/student}"
-                           sec:authorize="hasRole('USER')" style="font-size: 1.2rem;">Panel studenta</a>
-                    </li>
-                </ul>
+                    <a class="nav-link text-white" th:href="@{/admin}"
+                       sec:authorize="hasRole('ADMIN')" style="font-size: 1.2rem;">Panel administartora</a>
+                    <a class="nav-link text-white" th:href="@{/student}"
+                       sec:authorize="hasRole('STUDENT')" style="font-size: 1.2rem;">Panel studenta</a>
                 </li>
             </ul>
         </div>
@@ -62,8 +62,8 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title" th:text="${courseModel1.name}"></h5>
                     <p class="card-text" th:text="${courseModel1.description}"></p>
-                    <a href="#" class="btn btn-warning card-btn" onmouseover="this.style.color='white';"
-                       onmouseout="this.style.color='';">KUP</a>
+                    <a th:href="@{/courses}" class="btn btn-warning card-btn" onmouseover="this.style.color='white';"
+                       onmouseout="this.style.color='';">Dowiedz się więcej</a>
                 </div>
             </div>
         </div>
@@ -75,8 +75,8 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title" th:text="${courseModel2.name}"></h5>
                     <p class="card-text" th:text="${courseModel2.description}"></p>
-                    <a href="#" class="btn btn-warning card-btn" onmouseover="this.style.color='white';"
-                       onmouseout="this.style.color='';">KUP</a>
+                    <a th:href="@{/courses}" class="btn btn-warning card-btn" onmouseover="this.style.color='white';"
+                       onmouseout="this.style.color='';">Dowiedz się więcej</a>
                 </div>
             </div>
         </div>
@@ -88,8 +88,8 @@
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title" th:text="${courseModel3.name}"></h5>
                     <p class="card-text" th:text="${courseModel3.description}"></p>
-                    <a href="#" class="btn btn-warning card-btn" onmouseover="this.style.color='white';"
-                       onmouseout="this.style.color='';">KUP</a>
+                    <a th:href="@{/courses}" class="btn btn-warning card-btn" onmouseover="this.style.color='white';"
+                       onmouseout="this.style.color='';">Dowiedz się więcej</a>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
@@ -43,12 +43,12 @@ public class CourseModel {
     @Column(name = "enroll")
     private int enroll;
 
-    @OneToOne(mappedBy = "course")
-    private EnrollmentModel enrollment;
+    @OneToMany(mappedBy = "course")
+    private List<EnrollmentModel> enrollments;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="package")
-    private Set<ModuleModel> modules;
+    private List<ModuleModel> modules;
 
 // czy przypadkiem te dwie funkcjonalnosci nie powinny byc robione w nowej kalsie?
 // np. CourseAvailability

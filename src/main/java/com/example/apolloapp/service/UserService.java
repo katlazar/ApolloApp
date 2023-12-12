@@ -1,19 +1,21 @@
 package com.example.apolloapp.service;
 
+import com.example.apolloapp.model.CourseModel;
+import com.example.apolloapp.model.EnrollmentModel;
 import com.example.apolloapp.model.RoleModel;
 import com.example.apolloapp.model.UserModel;
+import com.example.apolloapp.repository.CourseRepository;
+import com.example.apolloapp.repository.EnrollmentRepository;
 import com.example.apolloapp.repository.RoleRepository;
 import com.example.apolloapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +23,8 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final EnrollmentRepository enrollmentRepository;
+    private final CourseRepository courseRepository;
 
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -32,9 +36,8 @@ public class UserService {
 
     public void addUser(UserModel user) {
         user.setPassword(passwordEncoder().encode(user.getPassword()));
-        Set<RoleModel> roles = new HashSet<>();
-        roles.add(roleRepository.findById(2L).orElse(null));
-        user.setRoles(roles);
+        RoleModel role = roleRepository.findByTypeName("ROLE_USER");
+        user.setRole(role);
         user.setType("user");
 
         UserModel existingUser = userRepository.findByUsernameOrEmail(user.getUsername(), user.getUsername());
@@ -46,11 +49,7 @@ public class UserService {
     }
 
     public UserModel getUserById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("Course does not exist. Check input"));
-    }
-
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User does not exist. Check input"));
     }
 
     public UserModel getCurrentlyLoggedUser() {
@@ -58,5 +57,24 @@ public class UserService {
         return userRepository.findByUsernameOrEmail(username, username);
     }
 
+    public String addEnrollmentForUser(Long courseId) {
+        CourseModel courseModel = courseRepository.findCourseById(courseId);
+        courseModel.setCapacity(courseModel.getCapacity()-1);
+        courseModel.setEnroll(courseModel.getEnroll()+1);
 
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserModel userModel = userRepository.findByUsernameOrEmail(username, username);
+        RoleModel role = roleRepository.findByTypeName("ROLE_STUDENT"); // po zakupie kursu USER staje się STUDENTEM
+        userModel.setRole(role);
+        userModel.setType("student");
+
+        EnrollmentModel enrollment = new EnrollmentModel();
+        enrollment.setUser(userModel);
+        enrollment.setCourse(courseModel);
+        enrollment.setCreationDate(LocalDate.now());
+        enrollment.setPaymentStatus(true);
+        enrollment.setCoursePrice(courseModel.getBasePrice());
+        enrollmentRepository.save(enrollment);
+        return courseModel.getName();
+    }
 }

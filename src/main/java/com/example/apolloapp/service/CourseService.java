@@ -1,7 +1,6 @@
 package com.example.apolloapp.service;
 
 import com.example.apolloapp.model.CourseModel;
-import com.example.apolloapp.model.ModuleModel;
 import com.example.apolloapp.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

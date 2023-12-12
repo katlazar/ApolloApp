@@ -1,13 +1,14 @@
 package com.example.apolloapp.controller;
 
+import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.model.UserModel;
+import com.example.apolloapp.service.CourseService;
 import com.example.apolloapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -16,20 +17,8 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final CourseService courseService;
 
-    // do dodawania ogólnie users (ADMIN / STUDENT / TEACHER)
-//    @GetMapping("/addUser")
-//    public String addUser(Model model){
-//        List<UserModel> list = userService.getUserList();
-//        model.addAttribute("userModel", list);
-//        return "userList";
-//    }
-//    // do zapisywania ogólnie users (ADMIN / STUDENT / TEACHER)
-//    @PostMapping("/addUser")
-//    public RedirectView postAddUser(UserModel user){
-//        userService.addUser(user);
-//        return new RedirectView("/users");
-//    }
 
     // do edycji wszystkich users (ADMIN / STUDENT / TEACHER)
     @PutMapping("/editUser/{id}")
@@ -37,13 +26,6 @@ public class UserController {
         UserModel user = userService.getUserById(id);
         model.addAttribute("userModel", user);
         return "editUser";
-    }
-
-    // do USUWANIA wszystkich users (ADMIN / STUDENT / TEACHER)
-    @DeleteMapping
-    public RedirectView deleteUser(@PathVariable("id") Long id){
-        userService.deleteUser(id);
-        return new RedirectView("/users");
     }
 
     @GetMapping("/registration")
@@ -62,5 +44,13 @@ public class UserController {
             model.addAttribute("userModel", userModel);
             return "registration";
         }
+    }
+
+    @GetMapping("/enrollment")
+    public String addEnrollment(@RequestParam("id") Long courseId, Model model) {
+        List<CourseModel> list = courseService.getCourseList();
+        model.addAttribute("courseModel", list);
+        model.addAttribute("courseName", userService.addEnrollmentForUser(courseId));
+        return "courseList";
     }
 }
