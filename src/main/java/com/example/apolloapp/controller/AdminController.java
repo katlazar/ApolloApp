@@ -30,10 +30,22 @@ public class AdminController {
     // admin pobiera listę wszytskich users (ADMIN / STUDENT / TEACHER) ---> w wierszu tabeli z nazwiskami users na końcu button "Edytuj"
     @GetMapping("/users")
     public String getUserList(Model model){
-        List<UserModel> list = userService.getUserList();
+        List<UserModel> list = userService.getActiveUserList();
         model.addAttribute("userModel", list);
         model.addAttribute("userObject", userService.getCurrentlyLoggedUser());
         return "admin-user-list";
+    }
+
+    @PostMapping("/users")
+    public String editeUser(@ModelAttribute("userId") Long userId, @ModelAttribute("type") String userType) {
+        userService.saveEditedUser(userId, userType);
+        return "redirect:/users";
+    }
+
+    @PostMapping("/deleteUser")
+    public String deleteUser(@ModelAttribute("userId") Long userId) {
+        userService.deleteUser(userId);
+        return "redirect:/users";
     }
 
     @GetMapping("/teachers")

@@ -42,4 +42,7 @@ public class UserModel {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     private RoleModel role;
+
+    @Column(name="deleted")
+    private boolean deleted;
 }

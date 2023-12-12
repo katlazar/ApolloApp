@@ -10,11 +10,10 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<UserModel, Long> {
 
 
-    UserModel findByUsernameOrEmail(String username, String email);  // do rozważenie czy wyszukiwanie po email jest nam potrzebne?
+    UserModel findByUsernameOrEmail(String username, String email);
 
     List<UserModel> findByType(String teacher);
-    // ---> w UserDetail jest problem z implementacją metody loadUserByUsername(String name)
 
-   // UserModel findByName(String name); -->wymusza wykonanie metody static
+    List<UserModel> findByDeleted(boolean b);
 
 }
