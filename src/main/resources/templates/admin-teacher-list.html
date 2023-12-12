@@ -64,6 +64,19 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <tr th:each="teacher : ${userModel}">
+                        <td th:text="${teacher.name + ' ' + teacher.surname}"></td>
+                        <td>
+                            <div th:each="module : ${teacher.modules}" th:text="${module.subject}"></div>
+                        </td>
+                        <td>
+                            <a th:href="@{/teacherDetails/{id}(id=${teacher.id})}"
+                               class="btn-right btn btn-warning"
+                               role="button">
+                                Edytuj
+                            </a>
+                        </td>
+                    </tr>
 <!--TO D0-->
                     </tbody>
                 </table>

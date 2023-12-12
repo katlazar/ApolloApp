@@ -17,8 +17,9 @@ public class ModuleModel {
     @Column(name = "subject")
     private String subject;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserModel teacher;
 
     @Column(name = "start_date")
     private LocalDate startDate;

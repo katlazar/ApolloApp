@@ -59,7 +59,6 @@ public class UserService {
 
     public String addEnrollmentForUser(Long courseId) {
         CourseModel courseModel = courseRepository.findCourseById(courseId);
-        courseModel.setCapacity(courseModel.getCapacity()-1);
         courseModel.setEnroll(courseModel.getEnroll()+1);
 
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -76,5 +75,9 @@ public class UserService {
         enrollment.setCoursePrice(courseModel.getBasePrice());
         enrollmentRepository.save(enrollment);
         return courseModel.getName();
+    }
+
+    public List<UserModel> getTeacherList() {
+        return userRepository.findByType("teacher");
     }
 }

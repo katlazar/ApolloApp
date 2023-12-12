@@ -36,6 +36,9 @@ public class UserModel {
     @OneToMany(mappedBy = "user")
     private List<EnrollmentModel> enrollments;
 
+    @OneToMany(mappedBy = "teacher")
+    private List<ModuleModel> modules;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     private RoleModel role;
