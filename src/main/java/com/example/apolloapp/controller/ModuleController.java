@@ -25,7 +25,7 @@ public class ModuleController {
     public String addModule(Model model){
         List<CourseModel> list = courseService.getCourseList();
         model.addAttribute("courseModel", list);
-        return "addModule";
+        return "add-new-module";
     }
     // stworzenie end-point dla widoku gdzie pokazujemy wszystkie dane o module
 
