@@ -54,8 +54,7 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <form method="post" role="form" th:action="@{/editCourse}" class="form-horizontal">
-<!--                        <input type="hidden" th:field="*{id}"/>-->
-
+                        <input type="hidden" th:field="*{id}"/>
 
                         <div class="mb-3">
                             <label class="form-label" for="name">Zmień nazwę kursu:</label>
@@ -97,11 +96,16 @@
                         <div class="mb-3">
                             <button type="submit" class="btn btn-warning">Zapisz zmiany</button>
                         </div>
-
-<!--                        <div class="mb-3">-->
-<!--                            <button type="submit" class="btn btn-warning">Usuń kurs</button>-->
-<!--                        </div>-->
                     </form>
+<!-- TO DO-->
+                    <form method="post" role="form" th:action="@{/deleteCourse}" class="form-horizontal">
+                        <input type="hidden" th:field="*{id}" />
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-danger" name="action" value="delete">Usuń kurs</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
