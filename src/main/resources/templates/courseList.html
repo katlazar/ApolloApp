@@ -33,7 +33,7 @@
                     <thead>
                     <div th:if="${param.id}">
                         <div class="alert alert-success">Zostałeś pomyślnie zapisany na kurs "<span th:text="${courseName}"></span>".
-                            <a class="btn btn-warning card-btn me-2 nav-link-login" th:href="@{/login}"
+                            <a class="btn btn-success card-btn me-2 nav-link-login" th:href="@{/login}"
                                onmouseover="this.style.color='white';" onmouseout="this.style.color='';"
                                sec:authorize="hasRole('USER')">Zaloguj się ponownie</a>
                         </div>
@@ -68,9 +68,13 @@
                                 </a>
                                 <a th:href="@{'/enrollment?id=' + ${course.id}}"
                                    class="btn-right btn btn-warning"
-                                   role="button" sec:authorize="hasRole('USER')">
+                                   role="button" sec:authorize="hasRole('USER')"
+                                   th:if="!${param.id}">
                                     Zapisz się
                                 </a>
+                                <button th:if="${param.id}" th:disabled="${param.id}" class="btn-right btn btn-warning" sec:authorize="hasRole('USER')">
+                                        Zapisz się
+                                </button>
                             </td>
                         </tr>
                     </tbody>

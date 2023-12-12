@@ -59,6 +59,8 @@ public class UserService {
 
     public String addEnrollmentForUser(Long courseId) {
         CourseModel courseModel = courseRepository.findCourseById(courseId);
+        courseModel.setCapacity(courseModel.getCapacity()-1);
+        courseModel.setEnroll(courseModel.getEnroll()+1);
 
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserModel userModel = userRepository.findByUsernameOrEmail(username, username);
