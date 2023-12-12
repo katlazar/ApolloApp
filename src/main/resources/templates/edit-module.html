@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>edit-modules</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid d-flex justify-content-end">
+        <div class="d-flex align-items-center">
+            <a class="navbar-brand display-4" style="font-size: 1.5rem; margin-left: 0px;">Edycja modułu</a>
+            <div style="width: 40px; height: 40px; background-color: #ccc; border-radius: 50%; margin-right: 30px; text-align: center; line-height: 40px; margin-left: 0px;">
+                <span style="color: white; font-size: 1.5rem; ">A</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="row">
+    <aside class="sidebar col-md-3 navbar-dark bg-dark">
+        <nav class="sidebar-nav">
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a class="btn btn-warning card-btn me-2 nav-link-back" th:href="@{/modules}"
+                       onmouseover="this.style.color='white';" onmouseout="this.style.color='';">Powrót</a>
+                </li>
+                <li class="list-group-item " style="padding-top: 40px;">
+                    <a href="#" class="custom-btn" th:href="@{/a-courses}">
+                        <i class="ion-bag"></i> <span>Kursy</span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#" class="custom-btn" style="color: lightslategrey;">
+                        <i class="ion-ios-settings"></i> <span>Moduły</span>
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#" class="custom-btn" th:href="@{/teachers}">
+                        <i class="ion-ios-settings"></i> <span>Trenerzy</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+</section>
+
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-xl-12 col-md-12 mb-12">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <form method="post" role="form" th:action="@{/editModule}"
+                          class="form-horizontal">
+
+                        <div class="mb-3">
+                            <label class="form-label" for="subject">Zmień nazwę modelu:</label>
+                            <input class="form-control" type="text" id="subject" name="subject"
+                                   th:field="*{moduleModel.subject}"/>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label class="form-label" for="teacher">Zmień trenera:</label>
+                            <input class="form-control" type="text" id="teacher" name="teacher"
+                                   th:field="*{moduleModel.userId}"/>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label class="form-label" for="startDate">Data rozpoczęcia:</label>
+                            <input class="form-control" type="date" id="startDate" name="startDate"
+                                   th:field="*{moduleModel.startDate}"/>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label class="form-label" for="startDate">Data rozpoczęcia:</label>
+                            <input class="form-control" type="date" id="startDate" name="startDate"
+                                   th:field="*{moduleModel.endDate}"/>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label class="form-label" for="totalHours">Zmień liczbę godzin:</label>
+                            <input class="form-control" type="number" id="totalHours" name="totalHours"
+                                   th:field="*{moduleModel.endDate}"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-warning">Dodaj moduł</button>
+                        </div>
+                    </form>
+
+                    <form method="post" role="form" th:action="@{/deleteModule}" class="form-horizontal">
+                        <input type="hidden" th:field="*{id}" />
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-danger" name="action" value="delete">Usuń moduł</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
