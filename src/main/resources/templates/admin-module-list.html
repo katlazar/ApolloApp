@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="#" class="custom-btn" th:href="@{/users}">
+                    <a href="#" class="custom-btn" th:href="@{/teachers}">
                         <i class="ion-ios-settings"></i> <span>Trenerzy</span>
                     </a>
                 </li>
@@ -69,7 +69,7 @@
                     <tbody>
                     <tr th:each="module : ${moduleModel}">
                         <td th:text="${module.subject}"></td>
-                        <td th:text="${module.subject}"></td>
+                        <td th:text="${module.teacher.name + ' ' + module.teacher.surname}"></td>
                         <td th:text="${module.startDate}"></td>
                         <td th:text="${module.endDate}"></td>
                         <td th:text="${module.totalHours}"></td>

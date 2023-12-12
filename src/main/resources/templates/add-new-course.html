@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="#" class="custom-btn" th:href="@{/users}">
+                    <a href="#" class="custom-btn" th:href="@{/teachers}">
                         <i class="ion-ios-settings"></i> <span>Trenerzy</span>
                     </a>
                 </li>
@@ -65,33 +65,34 @@
                         <div class=" mb-3">
                             <label class="form-label" for="name">Nazwa kursu:</label>
                             <input class="form-control" type="text" id="name" name="name"
-                                   placeholder="Wprowadź nazwę kursu"/>
+                                   placeholder="Wprowadź nazwę kursu" required/>
                         </div>
 
                         <div class=" mb-3">
                             <label for="moduleId1" class="form-label">Wybierz moduł</label>
                             <select class="form-control" id="moduleId1" name="moduleId1" th:field="*{moduleModel}" multiple="multiple">
                                 <option value="" hidden>Wybierz</option>
-                                <option th:each="module : ${moduleModel}" th:value="${module.id}" th:text="${module.subject}"></option>
+                                <option th:each="module : ${moduleModel}" th:value="${module.id}"
+                                        th:text="${module.subject + ' (' + module.teacher.name + ' ' + module.teacher.surname + ', start: ' + module.startDate + ')'}"></option>
                             </select>
                         </div>
 
                         <div class=" mb-3">
                             <label class="form-label" for="startDate">Data rozpoczęcia:</label>
                             <input class="form-control" type="date" id="startDate" name="startDate"
-                                   placeholder="Wprowadź datę rozpoczęcia kursu"/>
+                                   placeholder="Wprowadź datę rozpoczęcia kursu" required/>
                         </div>
 
                         <div class=" mb-3">
                             <label class="form-label" for="endDate">Data zakończenia:</label>
                             <input class="form-control" type="date" id="endDate" name="endDate"
-                                   placeholder="Wprowadź datę zakonczenia kursu"/>
+                                   placeholder="Wprowadź datę zakonczenia kursu" required/>
                         </div>
 
                         <div class=" mb-3">
                             <label class="form-label" for="capacity">Dostępne miejsca:</label>
                             <input class="form-control" type="number" id="capacity" name="capacity"
-                                   placeholder="Dostępne miejsca"/>
+                                   placeholder="Dostępne miejsca" required/>
                         </div>
 
                         <div class=" mb-3">
