@@ -1,5 +1,7 @@
 package com.example.apolloapp.service;
 
+import com.example.apolloapp.dto.CourseDto;
+import com.example.apolloapp.mapper.CourseMapper;
 import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,9 +20,11 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
-    public void addCourse(CourseModel course) {
-        if(!courseExists(course)){
-            courseRepository.save(course);
+    public CourseDto addCourse(CourseDto courseDto) {
+        if(!courseExists(courseDto)){
+            CourseModel courseModel = CourseMapper.toCourseModel(courseDto);
+            CourseModel newCourse = courseRepository.save(courseModel);
+            return CourseMapper.toCourseDto(newCourse);
         } else{
             throw new RuntimeException("Course with the same name already exist in the data base. Change name.");
         }
@@ -34,8 +38,8 @@ public class CourseService {
     public void deleteCourse(Long id) {
         courseRepository.deleteById(id);
     }
-    private boolean courseExists(CourseModel course){
-        CourseModel existingCourse = courseRepository.findByName(course.getName());
+    private boolean courseExists(CourseDto courseDto){
+        CourseModel existingCourse = courseRepository.findByName(courseDto.getName());
         return existingCourse != null;
         // jeżeli nie jest null to kurs już istnieje
     }

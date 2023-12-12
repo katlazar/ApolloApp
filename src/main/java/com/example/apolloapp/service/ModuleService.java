@@ -1,5 +1,7 @@
 package com.example.apolloapp.service;
 
+import com.example.apolloapp.dto.ModuleDto;
+import com.example.apolloapp.mapper.ModuleMapper;
 import com.example.apolloapp.model.ModuleModel;
 import com.example.apolloapp.repository.ModuleRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,15 +19,15 @@ public class ModuleService {
         return moduleRepository.findAll();
     }
 
-
-    public void addModule(ModuleModel module) {
-        if(!moduleExists(module)){
-            moduleRepository.save(module);
+    // zastosowanie mappera do zapisu obiektu Dto
+    public ModuleDto addModule(ModuleDto moduleDto) {
+        if(!moduleExists(moduleDto)){
+            ModuleModel moduleModel = ModuleMapper.toModuleModel(moduleDto);
+            ModuleModel newModule = moduleRepository.save(moduleModel);
+            return ModuleMapper.toModuleDto(newModule); // <--- DO SPRAWDZENIA
         } else{
             throw new RuntimeException("Module with the same name already exist in the data base. Change name.");
         }
-        // jeżeli istnieje obiekt o danym id to edit nadpisze zminaay
-        // dodać lepiej metode do edit
     }
 
     public ModuleModel getModuleById(Long id) {
@@ -38,8 +40,8 @@ public class ModuleService {
         moduleRepository.deleteById(id);
     }
 
-    private boolean moduleExists(ModuleModel module){
-        ModuleModel existingModule = moduleRepository.findBySubject(module.getSubject());
+    private boolean moduleExists(ModuleDto moduleDto){
+        ModuleModel existingModule = moduleRepository.findBySubject(moduleDto.getSubject());
         return existingModule != null;
         // jeżeli nie jest null to moduł już istnieje
     }

@@ -1,5 +1,6 @@
 package com.example.apolloapp.controller;
 
+import com.example.apolloapp.dto.CourseDto;
 import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.model.ModuleModel;
 import com.example.apolloapp.service.CourseService;
@@ -33,9 +34,10 @@ public class CourseController {
         return "courseList";
     }
 
+    // zapis modułu w repozytorium kursów (odwołanie do całego obiektu poprzez @RequestBody)
     @PostMapping("/addCourse")
-    public RedirectView postAddCourse(CourseModel course) {
-        courseService.addCourse(course);
+    public RedirectView postAddCourse(@RequestBody CourseDto courseDto) {
+        courseService.addCourse(courseDto);
         return new RedirectView("/a-courses");
     }
 
