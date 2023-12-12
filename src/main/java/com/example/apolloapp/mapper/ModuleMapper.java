@@ -1,15 +1,25 @@
 package com.example.apolloapp.mapper;
 
 import com.example.apolloapp.dto.ModuleDto;
-import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.model.ModuleModel;
+import com.example.apolloapp.model.UserModel;
+import com.example.apolloapp.service.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class ModuleMapper {
 
-    public static ModuleModel toModuleModel(ModuleDto moduleDto){
+    private final UserService userService;
+
+    public ModuleModel toModuleModel(ModuleDto moduleDto){
         ModuleModel moduleModel = new ModuleModel();
         moduleModel.setSubject(moduleDto.getSubject());
-        moduleModel.setUserId(moduleDto.getUserId());
+
+        UserModel teacher = userService.getUserById(moduleDto.getUserId());
+        moduleModel.setTeacher(teacher);
+
         moduleModel.setStartDate(moduleDto.getStartDate());
         moduleModel.setEndDate(moduleDto.getEndDate());
         moduleModel.setTotalHours(moduleDto.getTotalHours());
@@ -19,7 +29,7 @@ public class ModuleMapper {
     public static ModuleDto toModuleDto(ModuleModel moduleModel){
         ModuleDto moduleDto = new ModuleDto();
         moduleDto.setSubject(moduleModel.getSubject());
-        moduleDto.setUserId(moduleModel.getUserId());
+        moduleDto.setUserId(moduleModel.getTeacher().getId());
         moduleDto.setStartDate(moduleModel.getStartDate());
         moduleDto.setEndDate(moduleModel.getEndDate());
         moduleDto.setTotalHours(moduleModel.getTotalHours());

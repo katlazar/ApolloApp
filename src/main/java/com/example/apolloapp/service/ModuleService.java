@@ -13,6 +13,7 @@ import java.util.List;
 public class ModuleService {
 
     private final ModuleRepository moduleRepository;
+    private final ModuleMapper moduleMapper;
 
 
     public List<ModuleModel> getModuleList() {
@@ -22,7 +23,7 @@ public class ModuleService {
     // zastosowanie mappera do zapisu obiektu Dto
     public ModuleDto addModule(ModuleDto moduleDto) {
         if(!moduleExists(moduleDto)){
-            ModuleModel moduleModel = ModuleMapper.toModuleModel(moduleDto);
+            ModuleModel moduleModel = moduleMapper.toModuleModel(moduleDto);
             ModuleModel newModule = moduleRepository.save(moduleModel);
             return ModuleMapper.toModuleDto(newModule); // <--- DO SPRAWDZENIA
         } else{

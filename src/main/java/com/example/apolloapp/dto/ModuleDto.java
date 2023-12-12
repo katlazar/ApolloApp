@@ -1,5 +1,6 @@
 package com.example.apolloapp.dto;
 
+import com.example.apolloapp.model.UserModel;
 import lombok.Getter;
 import lombok.Setter;
 
