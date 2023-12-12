@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="list-group-item">
-                    <a href="#" class="custom-btn" th:href="@{/users}">
+                    <a href="#" class="custom-btn" th:href="@{/teachers}">
                         <i class="ion-ios-settings"></i> <span>Trenerzy</span>
                     </a>
                 </li>
@@ -66,10 +66,9 @@
 
                         <div class=" mb-3">
                             <label for="moduleId1" class="form-label">Zmień moduł</label>
-                            <input class="form-control" type="text" id="moduleId1" name="moduleId1"
-                                   th:field="*{courseModel.modules}"/>
+                            <input class="form-control" type="text" id="moduleId1" name="moduleId1"/>
+<!--                                   th:field="*{courseModel.modules}"/>-->
                         </div>
-
 
                         <div class=" mb-3">
                             <label class="form-label" for="startDate">Zmień datę rozpoczęcia:</label>
@@ -87,6 +86,12 @@
                             <label class="form-label" for="capacity">Zmień dostępne miejsca:</label>
                             <input class="form-control" type="number" id="capacity" name="capacity"
                                    th:field="*{courseModel.capacity}"/>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label class="form-label" for="basePrice">Zmień cenę bazową:</label>
+                            <input class="form-control" type="number" id="basePrice" name="basePrice"
+                                   th:field="*{courseModel.basePrice}"/>
                         </div>
 
                         <div class=" mb-3">

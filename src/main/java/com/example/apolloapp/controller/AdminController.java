@@ -32,6 +32,13 @@ public class AdminController {
     public String getUserList(Model model){
         List<UserModel> list = userService.getUserList();
         model.addAttribute("userModel", list);
+        return "admin-user-list";
+    }
+
+    @GetMapping("/teachers")
+    public String getTeacherList(Model model){
+        List<UserModel> list = userService.getTeacherList();
+        model.addAttribute("userModel", list);
         return "admin-teacher-list";
     }
 
