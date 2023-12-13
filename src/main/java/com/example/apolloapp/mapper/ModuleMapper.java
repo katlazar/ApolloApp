@@ -23,6 +23,7 @@ public class ModuleMapper {
         moduleModel.setStartDate(moduleDto.getStartDate());
         moduleModel.setEndDate(moduleDto.getEndDate());
         moduleModel.setTotalHours(moduleDto.getTotalHours());
+        moduleModel.setId(moduleDto.getId());
         return moduleModel;
     }
 

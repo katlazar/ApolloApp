@@ -42,6 +42,11 @@
                         <i class="ion-ios-settings"></i> <span>Trenerzy</span>
                     </a>
                 </li>
+                <li class="list-group-item">
+                    <a href="#" class="custom-btn" th:href="@{/users}">
+                        <i class="ion-ios-settings"></i> <span>Użytkownicy</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </aside>
@@ -56,6 +61,7 @@
                     <form method="post" role="form" th:action="@{/editModule}"
                           class="form-horizontal">
 
+                        <input type="hidden" th:value="*{id}" name="id"/>
                         <div class="mb-3">
                             <label class="form-label" for="subject">Zmień nazwę modelu:</label>
                             <input class="form-control" type="text" id="subject" name="subject"
@@ -64,37 +70,38 @@
 
                         <div class=" mb-3">
                             <label class="form-label" for="teacher">Zmień trenera:</label>
-                            <input class="form-control" type="text" id="teacher" name="teacher"
-                                   th:field="*{moduleModel.userId}"/>
+                            <input class="form-control" type="text" id="teacher" name="userId"
+                                   th:value="*{moduleModel.teacher.name + ' ' + moduleModel.teacher.surname}"/>
                         </div>
 
                         <div class=" mb-3">
                             <label class="form-label" for="startDate">Data rozpoczęcia:</label>
                             <input class="form-control" type="date" id="startDate" name="startDate"
-                                   th:field="*{moduleModel.startDate}"/>
+                                   th:value="*{moduleModel.startDate}"/>
                         </div>
 
                         <div class=" mb-3">
-                            <label class="form-label" for="startDate">Data rozpoczęcia:</label>
-                            <input class="form-control" type="date" id="startDate" name="startDate"
-                                   th:field="*{moduleModel.endDate}"/>
+                            <label class="form-label" for="endDate">Data zakończenia:</label>
+                            <input class="form-control" type="date" id="endDate" name="endDate"
+                                   th:value="*{moduleModel.endDate}"/>
                         </div>
 
                         <div class=" mb-3">
                             <label class="form-label" for="totalHours">Zmień liczbę godzin:</label>
                             <input class="form-control" type="number" id="totalHours" name="totalHours"
-                                   th:field="*{moduleModel.endDate}"/>
+                                   th:field="*{moduleModel.totalHours}"/>
                         </div>
 
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-warning">Dodaj moduł</button>
+                            <button type="submit" class="btn btn-warning">Zapisz zmiany</button>
                         </div>
                     </form>
 
                     <form method="post" role="form" th:action="@{/deleteModule}" class="form-horizontal">
-                        <input type="hidden" th:field="*{id}" />
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-danger" name="action" value="delete">Usuń moduł</button>
+                            <input type="hidden" th:value="*{id}" name="id"/>
+                            <button type="submit" class="btn btn-danger">Usuń moduł
+                            </button>
                         </div>
                     </form>
                 </div>

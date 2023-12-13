@@ -33,7 +33,9 @@ public class ModuleController {
     public String showModuleDetails(@PathVariable("id")Long id, Model model){
         ModuleModel module = moduleService.getModuleById(id);
         model.addAttribute("moduleModel", module);
-        return "moduleDetails";
+        List<UserModel> list = userService.getTeacherList();
+        model.addAttribute("userModel", list);
+        return "edit-module";
     }
 
     @PostMapping("/addModule")
@@ -42,11 +44,10 @@ public class ModuleController {
         return new RedirectView("/modules");
     }
 
-    @PutMapping("/editModule/{id}")
-    public String editModule(@PathVariable("id") Long id, Model model){
-        ModuleModel module = moduleService.getModuleById(id);
-        model.addAttribute("moduleModel", module);
-        return "editModule";
+    @PostMapping("/editModule")
+    public RedirectView editModule(ModuleDto moduleDto){
+        moduleService.saveEditedModule(moduleDto);
+        return new RedirectView("/modules");
     }
 
     @DeleteMapping("/deleteModule/{id}") //
