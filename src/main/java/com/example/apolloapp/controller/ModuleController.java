@@ -1,10 +1,8 @@
 package com.example.apolloapp.controller;
 
 import com.example.apolloapp.dto.ModuleDto;
-import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.model.ModuleModel;
 import com.example.apolloapp.model.UserModel;
-import com.example.apolloapp.service.CourseService;
 import com.example.apolloapp.service.ModuleService;
 import com.example.apolloapp.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +18,6 @@ public class ModuleController {
 
     private final ModuleService moduleService;
     private final UserService userService;
-
 
     @GetMapping("/addModule")
     public String addModule(Model model){
@@ -50,11 +47,10 @@ public class ModuleController {
         return new RedirectView("/modules");
     }
 
-    @DeleteMapping("/deleteModule/{id}") //
-    public RedirectView deleteModule(@PathVariable("id") Long id){
+    @PostMapping("/deleteModule") //
+    public RedirectView deleteModule(@ModelAttribute("id") Long id) {
         moduleService.deleteModule(id);
         return new RedirectView("/modules");
     }
-
 
 }
