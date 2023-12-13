@@ -8,10 +8,11 @@ VALUES  ('Ewa', 'Zwierzyńska', 'ewa.zwierzynska@java.com', 'Admin', '$2a$10$gqH
         ('Kasia', 'Suchanek', 'kasia.suchanek@java.com', 'Admin', '$2a$10$gqHrslMttQWSsDSVRTK1OehkkBiXsJ/a4z2OURU./dizwOQu5Lovu', 'kasia', 1, false),
         ('Franek', 'User', 'java.user@java.com','User', '$2a$10$BaG/azuGkeNwVUJK7XWcm.aGvBmk.WW5A.5dqs9CWZvZk8IPngSAK', 'user1', 2, false),
         ('Wanda', 'User', 'java.test@java.com','User', '$2a$12$TYSPPDsgR1T9vpgMSavOteZoqzjGVLt7rzsqKLrGL4oQdE3rWDNru', 'user2', 2, false),
-        ('Andy', 'Teacher', 'teacher.test@java.com','Teacher', '$2a$12$r2wEqaPsx.ADnvJcFwSr5u.ssVuRqjMkr8K6T.xJsxj4Pc3bAyTBu', 'teacher', 3, false);
+        ('Andy', 'Teacher', 'teacher.test@java.com','Teacher', '$2y$10$7Qhibo0YYt0AZejwebHTFutUL62lPpoRsuqP6i5dVHK.j2YAdtIXi', 'teacher', 3, false),
+        ('Luka', 'Sky', 'luka.test@java.com','Student', '$2y$10$8b7JeE.1Mrw0SROfdUQcy.gF4gYn4eQ5IF61lQjDBLYZV1mNKBJnO', 'student', 4, false);
 
 -- table role_user entries
---INSERT INTO role_user VALUES (1,1), (1,2), (1,3), (2,4), (2,5), (3,6);
+--INSERT INTO role_user VALUES (1,1), (1,2), (1,3), (2,4), (2,5), (3,6), (4,7);
 
 -- table course entries
 INSERT INTO course(name, description, base_price, type, start_date, end_date, total_hours, capacity, enroll)
