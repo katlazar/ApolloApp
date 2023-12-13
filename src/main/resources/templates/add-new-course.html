@@ -82,13 +82,6 @@
                             </select>
                         </div>
 
-<!--                        <label class="form-label" for="teacher">Trener:</label>-->
-<!--                        <select class="form-control" id="teacher" name="userId">-->
-<!--                            <option value="" hidden>Wybierz</option>-->
-<!--                            <option th:each="teacher : ${userModel}" th:value="${teacher.id}"-->
-<!--                                    th:text="${teacher.name + ' ' + teacher.surname}"></option>-->
-<!--                        </select>-->
-
                         <div class=" mb-3">
                             <label class="form-label" for="startDate">Data rozpoczęcia:</label>
                             <input class="form-control" type="date" id="startDate" name="startDate"
@@ -111,6 +104,12 @@
                             <label class="form-label" for="basePrice">Cena netto:</label>
                             <input class="form-control" type="number" id="basePrice" name="basePrice"
                                    placeholder="Cena netto" required/>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label class="form-label" for="type">Typ kursu:</label>
+                            <input class="form-control" type="text" id="type" name="type"
+                                   placeholder="Typ kursu (online,  weekendowy...)"/>
                         </div>
 
                         <div class=" mb-3">

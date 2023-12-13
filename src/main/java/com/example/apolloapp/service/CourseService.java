@@ -13,6 +13,7 @@ import java.util.List;
 public class CourseService {
 
     private final CourseRepository courseRepository;
+    private final CourseMapper courseMapper;
 
     // zwrócenie listy wszytkich kursów
     // chcemy zwrócić tylko przyszłe kursy - czy potrzebujemy dodatkowej logiki?
@@ -20,15 +21,13 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
-    public CourseDto addCourse(CourseDto courseDto) {
+    public void addCourse(CourseDto courseDto) {
         if(!courseExists(courseDto)){
-            CourseModel courseModel = CourseMapper.toCourseModel(courseDto);
-            CourseModel newCourse = courseRepository.save(courseModel);
-            return CourseMapper.toCourseDto(newCourse);
+            CourseModel courseModel = courseMapper.toCourseModel(courseDto);
+            courseRepository.save(courseModel);
         } else{
             throw new RuntimeException("Course with the same name already exist in the data base. Change name.");
         }
-
     }
 
     public CourseModel getCourseById(Long id) {
@@ -38,11 +37,9 @@ public class CourseService {
     public void deleteCourse(Long id) {
         courseRepository.deleteById(id);
     }
+
     private boolean courseExists(CourseDto courseDto){
         CourseModel existingCourse = courseRepository.findByName(courseDto.getName());
         return existingCourse != null;
-        // jeżeli nie jest null to kurs już istnieje
     }
-
-
 }

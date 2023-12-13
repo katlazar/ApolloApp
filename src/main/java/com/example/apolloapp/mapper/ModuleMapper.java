@@ -26,14 +26,4 @@ public class ModuleMapper {
         moduleModel.setId(moduleDto.getId());
         return moduleModel;
     }
-
-    public static ModuleDto toModuleDto(ModuleModel moduleModel){
-        ModuleDto moduleDto = new ModuleDto();
-        moduleDto.setSubject(moduleModel.getSubject());
-        moduleDto.setUserId(moduleModel.getTeacher().getId());
-        moduleDto.setStartDate(moduleModel.getStartDate());
-        moduleDto.setEndDate(moduleModel.getEndDate());
-        moduleDto.setTotalHours(moduleModel.getTotalHours());
-        return moduleDto;
-    }
 }

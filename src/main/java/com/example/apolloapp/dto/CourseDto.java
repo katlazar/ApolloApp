@@ -19,12 +19,12 @@ public class CourseDto {
     private String name;
     private String description;
     private BigDecimal basePrice;
+    private String type;
     private LocalDate startDate;
     private LocalDate endDate;
     private int totalHours;
     private int capacity;
     private List<Long> moduleId;
-
 }
 
 

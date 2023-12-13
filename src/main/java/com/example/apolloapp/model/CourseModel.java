@@ -50,6 +50,4 @@ public class CourseModel {
     @JoinTable(name="package")
     private List<ModuleModel> modules;
 
-// czy przypadkiem te dwie funkcjonalnosci nie powinny byc robione w nowej kalsie?
-// np. CourseAvailability
 }
