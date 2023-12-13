@@ -8,7 +8,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-     <div class="container-fluid d-flex justify-content-end">
+    <div class="container-fluid d-flex justify-content-end">
         <div class="d-flex align-items-center">
             <a class="navbar-brand display-4" style="font-size: 1.5rem">PANEL ADMINISTRATORA <span
                     th:text="${userObject.name + ' ' + userObject.surname}"></span></a>
@@ -24,7 +24,7 @@
         <nav class="sidebar-nav">
             <ul class="list-group list-group-flush">
 
-                <li class="list-group-item" >
+                <li class="list-group-item">
                     <a class="btn btn-warning card-btn me-2 nav-link-back" th:href="@{/logout}"
                        onmouseover="this.style.color='white';" onmouseout="this.style.color='';">Logout</a>
                 </li>
@@ -51,7 +51,55 @@
             </ul>
         </nav>
     </aside>
-
 </section>
+
+<div class="container-fluid ">
+    <div class="row content">
+        <div class="col-md-3 mb-3 ">
+            <div class="card h-800 shadow" >
+                <div class="card-admin-body" style="padding-top: 20px; padding-left: 20px; color: darkslategrey">
+                    <span># Nowe zadanie</span>
+                </div>
+                <div class="card">
+                    <button class="btn btn-success">Dodaj task</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3 ">
+            <div class="card shadow mb-4">
+                <div class="card-admin-body" style="padding-top: 20px; padding-left: 20px; color: darkslategrey">
+                    <span># TO DO</span>
+                </div>
+                <div class="card">
+                    <button class="btn btn-success">Dodaj task</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3 ">
+            <div class="card shadow mb-4">
+                <div class="card-admin-body" style="padding-top: 20px; padding-left: 20px; color: darkslategrey">
+                    <span># W trakcie realizacji</span>
+                </div>
+                <div class="card">
+                    <button class="btn btn-success">Dodaj task</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3 ">
+            <div class="card shadow mb-4">
+                <div class="card-admin-body" style="padding-top: 20px; padding-left: 20px; color: darkslategrey">
+                    <span># Zakończone</span>
+                </div>
+                <div class="card">
+                    <button class="btn btn-success">Dodaj task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
