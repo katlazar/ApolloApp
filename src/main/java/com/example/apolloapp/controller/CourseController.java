@@ -36,7 +36,7 @@ public class CourseController {
 
     // zapis modułu w repozytorium kursów (odwołanie do całego obiektu poprzez @RequestBody)
     @PostMapping("/addCourse")
-    public RedirectView postAddCourse(@RequestBody CourseDto courseDto) {
+    public RedirectView postAddCourse(CourseDto courseDto) {
         courseService.addCourse(courseDto);
         return new RedirectView("/a-courses");
     }
@@ -55,15 +55,12 @@ public class CourseController {
         //po usunięciu chcemy wrócić do strony z kursami czy wyświetlić coś innego?
     }
 
-    // stworzenie end-point dla widoku gdzie pokazujemy wszystkie dane o kursie
-    // pod button "see more"
+
     @GetMapping("/courseDetails/{id}")
     public String showCourseDetails(@PathVariable("id") Long id, Model model) {
         CourseModel course = courseService.getCourseById(id);
         model.addAttribute("courseModel", course);
         return "edit-course";
-        // request obsłużony @RequestBody?
-        // czy pod "getCourseById" umieszczamy wszystkie szczegóły kursu?
     }
 
 

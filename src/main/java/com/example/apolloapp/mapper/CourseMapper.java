@@ -2,12 +2,23 @@ package com.example.apolloapp.mapper;
 
 import com.example.apolloapp.dto.CourseDto;
 import com.example.apolloapp.model.CourseModel;
+import com.example.apolloapp.model.ModuleModel;
+import com.example.apolloapp.repository.ModuleRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
 public class CourseMapper {
 
-    // przekazanie danych z obiektu CourseDto do naszego modelu do zapisu
-    public static CourseModel toCourseModel(CourseDto courseDto){
+    private final ModuleRepository moduleRepository;
+
+    public CourseModel toCourseModel(CourseDto courseDto){
         CourseModel courseModel = new CourseModel();
+
         courseModel.setName(courseDto.getName());
         courseModel.setDescription(courseDto.getDescription());
         courseModel.setBasePrice(courseDto.getBasePrice());
@@ -15,24 +26,15 @@ public class CourseMapper {
         courseModel.setStartDate(courseDto.getStartDate());
         courseModel.setEndDate(courseDto.getEndDate());
         courseModel.setCapacity(courseDto.getCapacity());
-        courseModel.setEnroll(courseDto.getEnroll()); //potrzebne?
+
+        List<ModuleModel> moduleList = moduleRepository.findAllById(courseDto.getModuleId());
+        courseModel.setModules(moduleList);
+
+        int totalHoursSum = moduleList.stream()
+                .mapToInt(ModuleModel::getTotalHours)
+                .sum();
+        courseModel.setTotalHours(totalHoursSum);
+
         return courseModel;
     }
-
-    // przekazanie danych z naszego modelu do obiektu Dto
-    public static CourseDto toCourseDto(CourseModel courseModel){
-        CourseDto courseDto = new CourseDto();
-        courseDto.setName(courseModel.getName());
-        courseDto.setDescription(courseModel.getDescription());
-        courseDto.setBasePrice(courseModel.getBasePrice());
-        courseDto.setType(courseModel.getType());
-        courseDto.setStartDate(courseModel.getStartDate());
-        courseDto.setEndDate(courseModel.getEndDate());
-        courseDto.setTotalHours(courseModel.getTotalHours());
-        courseDto.setCapacity(courseModel.getCapacity());
-        courseDto.setEnroll(courseModel.getEnroll());
-        return courseDto;
-    }
-
-
 }

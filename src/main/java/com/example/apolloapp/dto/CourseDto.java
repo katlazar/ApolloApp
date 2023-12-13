@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,8 +24,7 @@ public class CourseDto {
     private LocalDate endDate;
     private int totalHours;
     private int capacity;
-    private int enroll;
-
+    private List<Long> moduleId;
 }
 
 

@@ -74,8 +74,8 @@
                         </div>
 
                         <div class=" mb-3">
-                            <label for="moduleId1" class="form-label">Wybierz moduł</label>
-                            <select class="form-control" id="moduleId1" name="moduleId1" th:field="*{moduleModel}" multiple="multiple">
+                            <label for="modules" class="form-label">Wybierz moduł</label>
+                            <select class="form-control" id="modules" name="moduleId" multiple="multiple">
                                 <option value="" hidden>Wybierz</option>
                                 <option th:each="module : ${moduleModel}" th:value="${module.id}"
                                         th:text="${module.subject + ' (' + module.teacher.name + ' ' + module.teacher.surname + ', start: ' + module.startDate + ')'}"></option>
@@ -104,6 +104,12 @@
                             <label class="form-label" for="basePrice">Cena netto:</label>
                             <input class="form-control" type="number" id="basePrice" name="basePrice"
                                    placeholder="Cena netto" required/>
+                        </div>
+
+                        <div class=" mb-3">
+                            <label class="form-label" for="type">Typ kursu:</label>
+                            <input class="form-control" type="text" id="type" name="type"
+                                   placeholder="Typ kursu (online,  weekendowy...)"/>
                         </div>
 
                         <div class=" mb-3">
