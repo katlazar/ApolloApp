@@ -69,8 +69,11 @@
 
                         <div class=" mb-3">
                             <label class="form-label" for="teacher">Trener:</label>
-                            <input class="form-control" type="text" id="teacher" name="teacher"
-                                   placeholder="Imię i nazwisko" required/>
+                            <select class="form-control" id="teacher" name="userId">
+                                <option value="" hidden>Wybierz</option>
+                                <option th:each="teacher : ${userModel}" th:value="${teacher.id}"
+                                        th:text="${teacher.name + ' ' + teacher.surname}"></option>
+                            </select>
                         </div>
 
                         <div class=" mb-3">
