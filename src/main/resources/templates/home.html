@@ -42,6 +42,8 @@
                        sec:authorize="hasRole('ADMIN')" style="font-size: 1.2rem;">Panel administartora</a>
                     <a class="nav-link text-white" th:href="@{/student}"
                        sec:authorize="hasRole('STUDENT')" style="font-size: 1.2rem;">Panel studenta</a>
+                    <a class="nav-link text-white" th:href="@{/teacher}"
+                       sec:authorize="hasRole('TEACHER')" style="font-size: 1.2rem;">Panel trenera</a>
                 </li>
             </ul>
         </div>
@@ -93,13 +95,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-</div>
-<div class="white-bar-text white-bar">
-    <div class="col-md-5 mb-3 custom-card" style="padding-top: 10px;">
-        <a th:href="@{/courses}" class="btn btn-secondary login-btn" role="button" style="font-size: 1.2rem;">Pełna
-            oferta kursów</a>
     </div>
 </div>
 </body>
