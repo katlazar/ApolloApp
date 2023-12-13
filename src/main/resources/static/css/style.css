@@ -58,6 +58,12 @@
     height: 100%;
 }
 
+.card-admin-body {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+}
+
 body {
     background-color: #f8f9fa;
 }
@@ -209,7 +215,9 @@ body {
 .custom-table {
     max-width: 100%;
 }
-
-
+.admin-card {
+    height: 200px !important;
+    margin-right: 0rem;
+}
 
 
