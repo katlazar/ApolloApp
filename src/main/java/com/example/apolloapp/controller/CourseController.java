@@ -60,7 +60,7 @@ public class CourseController {
     public String showCourseDetails(@PathVariable("id") Long id, Model model) {
         CourseModel course = courseService.getCourseById(id);
         model.addAttribute("courseModel", course);
-        return "edit-course";
+        return "details-course";
     }
 
 
