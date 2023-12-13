@@ -71,7 +71,7 @@
                         <div class=" mb-3">
                             <label class="form-label" for="teacher">Zmień trenera:</label>
                             <select class="form-control" id="teacher" name="userId">
-                                <option th:value="*{moduleModel.teacher.name + ' ' + moduleModel.teacher.surname}"
+                                <option th:value="*{moduleModel.teacher.id}"
                                         th:text="*{moduleModel.teacher.name + ' ' + moduleModel.teacher.surname}"></option>
                                 <option th:each="teacher : ${userModel}" th:value="${teacher.id}"
                                         th:text="${teacher.name + ' ' + teacher.surname}"></option>
