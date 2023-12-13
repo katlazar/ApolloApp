@@ -38,7 +38,8 @@ public class UserService {
         user.setPassword(passwordEncoder().encode(user.getPassword()));
         RoleModel role = roleRepository.findByTypeName("ROLE_USER");
         user.setRole(role);
-        user.setType("user");
+        user.setType("User");
+        user.setDeleted(false);
 
         UserModel existingUser = userRepository.findByUsernameOrEmail(user.getUsername(), user.getUsername());
         if (existingUser == null) {
@@ -65,7 +66,7 @@ public class UserService {
         UserModel userModel = userRepository.findByUsernameOrEmail(username, username);
         RoleModel role = roleRepository.findByTypeName("ROLE_STUDENT"); // po zakupie kursu USER staje się STUDENTEM
         userModel.setRole(role);
-        userModel.setType("student");
+        userModel.setType("Student");
 
         EnrollmentModel enrollment = new EnrollmentModel();
         enrollment.setUser(userModel);
@@ -78,6 +79,34 @@ public class UserService {
     }
 
     public List<UserModel> getTeacherList() {
-        return userRepository.findByType("teacher");
+        return userRepository.findByType("Teacher");
+    }
+
+    public void saveEditedUser(Long id, String type) {
+            UserModel user = userRepository.findById(id).orElse(null);
+            if (user == null) {
+                return;
+            }
+            String roleType = user.getRole().getTypeName();
+            String newRoleType = "ROLE_" + type.toUpperCase();
+            if (!roleType.equals(newRoleType)) {
+                RoleModel role = roleRepository.findByTypeName(newRoleType);
+                user.setRole(role);
+                user.setType(type);
+                userRepository.save(user);
+            }
+    }
+
+    public void deleteUser(Long id) {
+        UserModel user = userRepository.findById(id).orElse(null);
+        if (user == null) {
+            return;
+        }
+        user.setDeleted(true);
+        userRepository.save(user);
+    }
+
+    public List<UserModel> getActiveUserList() {
+        return userRepository.findByDeleted(false);
     }
 }

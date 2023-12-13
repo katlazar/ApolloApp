@@ -2,13 +2,13 @@
 INSERT INTO roles (type_name) VALUES ('ROLE_ADMIN'), ('ROLE_USER'), ('ROLE_TEACHER'), ('ROLE_STUDENT');
 
 -- table users entries
-INSERT INTO users(name, surname, email, type, password, username, role_id)
-VALUES  ('Ewa', 'Zwierzyńska', 'ewa.zwierzynska@java.com', 'admin', '$2a$10$gqHrslMttQWSsDSVRTK1OehkkBiXsJ/a4z2OURU./dizwOQu5Lovu', 'ewa', 1),
-        ('Kasia', 'Łazar', 'kasia.lazar@java.com','admin', '$2a$10$kWfkrOiCL4t1ZhIrWvvGbOjCJY5FMzFBYHcyLm7fOFxAJCmIS8KJm', 'kate', 1),
-        ('Kasia', 'Suchanek', 'kasia.suchanek@java.com', 'admin', '$2a$10$gqHrslMttQWSsDSVRTK1OehkkBiXsJ/a4z2OURU./dizwOQu5Lovu', 'kasia', 1),
-        ('Franek', 'User', 'java.user@java.com','user', '$2a$10$BaG/azuGkeNwVUJK7XWcm.aGvBmk.WW5A.5dqs9CWZvZk8IPngSAK', 'user1', 2),
-        ('Wanda', 'User', 'java.test@java.com','user', '$2a$12$TYSPPDsgR1T9vpgMSavOteZoqzjGVLt7rzsqKLrGL4oQdE3rWDNru', 'user2', 2),
-        ('Andy', 'Teacher', 'teacher.test@java.com','teacher', '$2a$12$r2wEqaPsx.ADnvJcFwSr5u.ssVuRqjMkr8K6T.xJsxj4Pc3bAyTBu', 'teacher', 3);
+INSERT INTO users(name, surname, email, type, password, username, role_id, deleted)
+VALUES  ('Ewa', 'Zwierzyńska', 'ewa.zwierzynska@java.com', 'Admin', '$2a$10$gqHrslMttQWSsDSVRTK1OehkkBiXsJ/a4z2OURU./dizwOQu5Lovu', 'ewa', 1, false),
+        ('Kasia', 'Łazar', 'kasia.lazar@java.com','Admin', '$2a$10$kWfkrOiCL4t1ZhIrWvvGbOjCJY5FMzFBYHcyLm7fOFxAJCmIS8KJm', 'kate', 1, false),
+        ('Kasia', 'Suchanek', 'kasia.suchanek@java.com', 'Admin', '$2a$10$gqHrslMttQWSsDSVRTK1OehkkBiXsJ/a4z2OURU./dizwOQu5Lovu', 'kasia', 1, false),
+        ('Franek', 'User', 'java.user@java.com','User', '$2a$10$BaG/azuGkeNwVUJK7XWcm.aGvBmk.WW5A.5dqs9CWZvZk8IPngSAK', 'user1', 2, false),
+        ('Wanda', 'User', 'java.test@java.com','User', '$2a$12$TYSPPDsgR1T9vpgMSavOteZoqzjGVLt7rzsqKLrGL4oQdE3rWDNru', 'user2', 2, false),
+        ('Andy', 'Teacher', 'teacher.test@java.com','Teacher', '$2a$12$r2wEqaPsx.ADnvJcFwSr5u.ssVuRqjMkr8K6T.xJsxj4Pc3bAyTBu', 'teacher', 3, false);
 
 -- table role_user entries
 --INSERT INTO role_user VALUES (1,1), (1,2), (1,3), (2,4), (2,5), (3,6);
