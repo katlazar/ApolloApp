@@ -3,8 +3,10 @@ package com.example.apolloapp.controller;
 import com.example.apolloapp.dto.ModuleDto;
 import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.model.ModuleModel;
+import com.example.apolloapp.model.UserModel;
 import com.example.apolloapp.service.CourseService;
 import com.example.apolloapp.service.ModuleService;
+import com.example.apolloapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,17 +19,15 @@ import java.util.List;
 public class ModuleController {
 
     private final ModuleService moduleService;
-    private final CourseService courseService;
+    private final UserService userService;
 
 
-    // dodanie modułu do konkretnego kursu
     @GetMapping("/addModule")
     public String addModule(Model model){
-        List<CourseModel> list = courseService.getCourseList();
-        model.addAttribute("courseModel", list);
+        List<UserModel> list = userService.getTeacherList();
+        model.addAttribute("userModel", list);
         return "add-new-module";
     }
-    // stworzenie end-point dla widoku gdzie pokazujemy wszystkie dane o module
 
     @GetMapping("/moduleDetails/{id}")
     public String showModuleDetails(@PathVariable("id")Long id, Model model){
@@ -36,9 +36,8 @@ public class ModuleController {
         return "moduleDetails";
     }
 
-    // zapis modułu w repozytorium modułów (odwołanie do całego obiektu poprzez @RequestBody)
     @PostMapping("/addModule")
-    public RedirectView postAddModule(@RequestBody ModuleDto moduleDto){
+    public RedirectView postAddModule(ModuleDto moduleDto){
         moduleService.addModule(moduleDto);
         return new RedirectView("/modules");
     }
