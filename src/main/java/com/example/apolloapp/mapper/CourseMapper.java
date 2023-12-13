@@ -11,11 +11,9 @@ public class CourseMapper {
         courseModel.setName(courseDto.getName());
         courseModel.setDescription(courseDto.getDescription());
         courseModel.setBasePrice(courseDto.getBasePrice());
-        courseModel.setType(courseDto.getType());
         courseModel.setStartDate(courseDto.getStartDate());
         courseModel.setEndDate(courseDto.getEndDate());
         courseModel.setCapacity(courseDto.getCapacity());
-        courseModel.setEnroll(courseDto.getEnroll()); //potrzebne?
         return courseModel;
     }
 
@@ -25,12 +23,10 @@ public class CourseMapper {
         courseDto.setName(courseModel.getName());
         courseDto.setDescription(courseModel.getDescription());
         courseDto.setBasePrice(courseModel.getBasePrice());
-        courseDto.setType(courseModel.getType());
         courseDto.setStartDate(courseModel.getStartDate());
         courseDto.setEndDate(courseModel.getEndDate());
         courseDto.setTotalHours(courseModel.getTotalHours());
         courseDto.setCapacity(courseModel.getCapacity());
-        courseDto.setEnroll(courseModel.getEnroll());
         return courseDto;
     }
 

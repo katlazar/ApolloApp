@@ -74,13 +74,20 @@
                         </div>
 
                         <div class=" mb-3">
-                            <label for="moduleId1" class="form-label">Wybierz moduł</label>
-                            <select class="form-control" id="moduleId1" name="moduleId1" th:field="*{moduleModel}" multiple="multiple">
+                            <label for="modules" class="form-label">Wybierz moduł</label>
+                            <select class="form-control" id="modules" name="moduleId" multiple="multiple">
                                 <option value="" hidden>Wybierz</option>
                                 <option th:each="module : ${moduleModel}" th:value="${module.id}"
                                         th:text="${module.subject + ' (' + module.teacher.name + ' ' + module.teacher.surname + ', start: ' + module.startDate + ')'}"></option>
                             </select>
                         </div>
+
+<!--                        <label class="form-label" for="teacher">Trener:</label>-->
+<!--                        <select class="form-control" id="teacher" name="userId">-->
+<!--                            <option value="" hidden>Wybierz</option>-->
+<!--                            <option th:each="teacher : ${userModel}" th:value="${teacher.id}"-->
+<!--                                    th:text="${teacher.name + ' ' + teacher.surname}"></option>-->
+<!--                        </select>-->
 
                         <div class=" mb-3">
                             <label class="form-label" for="startDate">Data rozpoczęcia:</label>
