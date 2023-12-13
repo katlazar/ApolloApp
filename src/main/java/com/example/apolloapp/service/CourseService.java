@@ -1,8 +1,10 @@
 package com.example.apolloapp.service;
 
 import com.example.apolloapp.dto.CourseDto;
+import com.example.apolloapp.dto.ModuleDto;
 import com.example.apolloapp.mapper.CourseMapper;
 import com.example.apolloapp.model.CourseModel;
+import com.example.apolloapp.model.ModuleModel;
 import com.example.apolloapp.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -41,5 +43,9 @@ public class CourseService {
     private boolean courseExists(CourseDto courseDto){
         CourseModel existingCourse = courseRepository.findByName(courseDto.getName());
         return existingCourse != null;
+    }
+    public void saveEditedCourse(CourseDto courseDto) {
+        CourseModel courseModel = courseMapper.toCourseModel(courseDto);
+        courseRepository.save(courseModel);
     }
 }
