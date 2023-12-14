@@ -59,7 +59,7 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <form method="post" role="form" th:action="@{/editCourse}" class="form-horizontal">
-                        <input type="hidden" th:field="*{id}"/>
+                        <input type="hidden" th:value="*{id}" name="id"/>
 
                         <div class="mb-3">
                             <label class="form-label" for="name">Zmień nazwę kursu:</label>
@@ -70,6 +70,11 @@
                         <div class="mb-3">
                             <label class="form-label" for="modules">Zmień moduł</label>
                             <select class="form-control" id="modules" name="moduleId" multiple="multiple">
+                                <option th:each="module : ${courseModel.modules}"
+                                        th:value="*{module.id}"
+                                        th:text="*{module.subject + ' (' + module.teacher.name + ' ' + module.teacher.surname + ', start: ' + module.startDate + ')'}"
+                                        th:selected="true" class="fst-italic">
+                                </option>
                                 <option th:each="module : ${modules}"
                                         th:value="${module.id}"
                                         th:text="${module.subject + ' (' + module.teacher.name + ' ' + module.teacher.surname + ', start: ' + module.startDate + ')'}"

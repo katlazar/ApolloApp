@@ -26,6 +26,7 @@ public class CourseMapper {
         courseModel.setStartDate(courseDto.getStartDate());
         courseModel.setEndDate(courseDto.getEndDate());
         courseModel.setCapacity(courseDto.getCapacity());
+        courseModel.setId(courseDto.getId());
 
         List<ModuleModel> moduleList = moduleRepository.findAllById(courseDto.getModuleId());
         courseModel.setModules(moduleList);
