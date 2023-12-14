@@ -56,6 +56,7 @@ public class CourseController {
         model.addAttribute("courseModel", course);
         return "details-course";
     }
+
     @GetMapping("/editCourse/{id}")
     public String getEditCourse(@PathVariable("id") Long id, Model model) {
         CourseModel course = courseService.getCourseById(id);
