@@ -72,9 +72,9 @@
                             <select class="form-control" id="modules" name="moduleId" multiple="multiple">
                                 <option th:each="module : ${modules}"
                                         th:value="${module.id}"
-                                        th:text="${module.subject}"
-                                        th:selected="${courseModel.modules != null and courseModel.modules.contains(module)}">
-                                    </option>
+                                        th:text="${module.subject + ' (' + module.teacher.name + ' ' + module.teacher.surname + ', start: ' + module.startDate + ')'}"
+                                        th:selected="false">
+                                </option>
                             </select>
                         </div>
 
