@@ -54,7 +54,7 @@ public class CourseController {
     public String showCourseDetails(@PathVariable("id") Long id, Model model) {
         CourseModel course = courseService.getCourseById(id);
         model.addAttribute("courseModel", course);
-        List<ModuleModel> modules = course.getModules();
+        List<ModuleModel> modules = moduleService.getModuleList();
         model.addAttribute("modules", modules);
         return "edit-course";
     }
