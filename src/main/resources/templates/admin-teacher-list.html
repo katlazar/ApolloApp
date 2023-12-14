@@ -58,7 +58,7 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <div class="mb-3">
-                    <a class="btn btn-secondary login-btn" th:href="@{/}">Dodaj trenera</a>
+                    <a class="btn btn-secondary login-btn" th:href="@{/teachers}">Dodaj trenera</a>
                 </div>
                 <table class="table action-panel table-bordered custom-table" id="dataTable" cellspacing="0">
                     <thead>
@@ -75,7 +75,7 @@
                             <div th:each="module : ${teacher.modules}" th:text="${module.subject}"></div>
                         </td>
                         <td>
-                            <a th:href="@{/teacherDetails/{id}(id=${teacher.id})}"
+                            <a th:href="@{/teachers}"
                                class="btn-right btn btn-warning"
                                role="button">
                                 Edytuj

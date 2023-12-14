@@ -1,6 +1,7 @@
 package com.example.apolloapp.controller;
 
 import com.example.apolloapp.dto.CourseDto;
+import com.example.apolloapp.dto.ModuleDto;
 import com.example.apolloapp.model.CourseModel;
 import com.example.apolloapp.model.ModuleModel;
 import com.example.apolloapp.service.CourseService;
@@ -41,19 +42,12 @@ public class CourseController {
         return new RedirectView("/a-courses");
     }
 
-    @PutMapping("/editCourse/{id}")
-    public String editCourse(@PathVariable("id") Long id, Model model) {
-        CourseModel course = courseService.getCourseById(id);
-        model.addAttribute("courseModel", course);
-        return "editCourse";
-    }
-
-    @DeleteMapping("/deleteCourse/{id}")
-    public RedirectView deleteCourse(@PathVariable("id") Long id) {
-        courseService.deleteCourse(id);
-        return new RedirectView("/a-courses");
-        //po usunięciu chcemy wrócić do strony z kursami czy wyświetlić coś innego?
-    }
+//    @DeleteMapping("/deleteCourse/{id}")
+//    public RedirectView deleteCourse(@PathVariable("id") Long id) {
+//        courseService.deleteCourse(id);
+//        return new RedirectView("/a-courses");
+//        //po usunięciu chcemy wrócić do strony z kursami czy wyświetlić coś innego?
+//    }
 
 
     @GetMapping("/courseDetails/{id}")
@@ -62,6 +56,26 @@ public class CourseController {
         model.addAttribute("courseModel", course);
         return "details-course";
     }
+//usuniecie klamerki
+    @GetMapping("/editCourse/{id}")
+    public String getEditCourse(@PathVariable("id") Long id, Model model) {
+        CourseModel course = courseService.getCourseById(id);
+        model.addAttribute("courseModel", course);
+        List<ModuleModel> modules = moduleService.getModuleList();
+        model.addAttribute("modules", modules);
+        return "edit-course";
+    }
 
+    @PostMapping("/deleteCourse/{id}")
+    public RedirectView deleteCourse(@PathVariable Long id) {
+        courseService.deleteCourse(id);
+        return new RedirectView("/a-courses");
+    }
+
+    @PostMapping("/editCourse")
+    public RedirectView editCourse(CourseDto courseDto) {
+        courseService.saveEditedCourse(courseDto);
+        return new RedirectView("/a-courses");
+    }
 
 }
